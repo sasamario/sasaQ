@@ -10928,3 +10928,8 @@ a.text-dark:focus {
   }
 }
 
+#markdown_preview {
+  height: 355px;
+  overflow-y: scroll;
+}
+

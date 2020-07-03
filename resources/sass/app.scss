@@ -6,3 +6,8 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+#markdown_preview {
+  height: 355px;
+  overflow-y: scroll;
+}

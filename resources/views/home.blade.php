@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="thread content justify-content-center">
+<div class="top-wrapper content mx-auto" style="width:60%;">
     @foreach ($articles as $item)
-        <div class="card">
-            <div class="card-header">
-                <a href="{{route('show', ['id' => $item->article_id])}}">{{$item->title}}</a>
+        <div class="article-box col-10 mx-auto py-3">
+            <div class="article-title">
+                <a class="title" href="{{route('show', ['id' => $item->article_id])}}">{{$item->title}}</a>
             </div>
-            <div class="card-body">
-                {{$item->body}}
+            <div class="article-date">
+                {{$item->date}}
             </div>
         </div>
     @endforeach

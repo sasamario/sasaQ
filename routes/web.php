@@ -19,10 +19,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'ArticleController@read')->name('home');
 
 //投稿フォームへのルート
 Route::get('/create', 'ArticleController@create')->name('create');
 
 //投稿内容追加のルート
 Route::post('/add', 'ArticleController@add')->name('add');
+
+//指定ID記事へのルート
+Route::get('/article/{id}', 'ArticleController@show')->name('show');

@@ -6,6 +6,31 @@
 
 require('./bootstrap');
 
+import marked from 'marked';
+
+// マークダウンをプレビュー画面に表示する
+$(function() {
+    marked.setOptions({
+        langPrefix: '',
+        breaks : true,
+        sanitize: true,
+        gfm: true,
+    });
+
+    $('#markdown_editor_textarea').keyup(function() { //keyup()イベントは、押されたキーを話すとイベント発生
+        var html = marked(getHtml($(this).val())); //入力された値をval()で取得　marked()でマークダウン文字列をHTMLに変換
+        $('#markdown_preview').html(html); //markdown_previewのhtml要素の書き換え
+    });
+
+    // HTMLでは、比較演算子が &lt; 等になるのでreplace関数で置換を行う　
+    function getHtml(html) {
+        html = html.replace(/&lt;/g, '<');
+        html = html.replace(/&gt;/g, '>');
+        html = html.replace(/&amp;/g, '&');
+        return html;
+    }
+});
+
 window.Vue = require('vue');
 
 /**

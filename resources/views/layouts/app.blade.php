@@ -50,6 +50,9 @@
                             @endif
                         @else
                             <li class="nab-item">
+                                <a class="nav-link" href="{{route('home')}}">トップ</a>
+                            </li>
+                            <li class="nab-item">
                                 <a class="nav-link" href="{{route('create')}}">投稿</a>
                             </li>
                             <li class="nav-item dropdown">

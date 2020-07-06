@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ArticleController extends Controller
 {
     /**
-     * @var ArticleService 
+     * @var ArticleService
      */
     private $articleService;
 

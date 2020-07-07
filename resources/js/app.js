@@ -12,15 +12,19 @@ import marked from 'marked';
 $(function() {
     marked.setOptions({
         langPrefix: '',
-        breaks : true,
+        breaks : true, //改行オプション
         sanitize: true,
-        gfm: true,
     });
 
     $('#markdown_editor_textarea').keyup(function() { //keyup()イベントは、押されたキーを話すとイベント発生
         var html = marked(getHtml($(this).val())); //入力された値をval()で取得　marked()でマークダウン文字列をHTMLに変換
         $('#markdown_preview').html(html); //markdown_previewのhtml要素の書き換え
     });
+
+    // 個別の記事画面のマークダウンをHTMLに変換する
+    var target = $('.article-body')
+    var html = marked(getHtml(target.html()));
+    $('.article-body').html(html);
 
     // HTMLでは、比較演算子が &lt; 等になるのでreplace関数で置換を行う　
     function getHtml(html) {

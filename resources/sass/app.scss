@@ -7,7 +7,84 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+//投稿フォーム
 #markdown_preview {
   height: 355px;
   overflow-y: scroll;
+}
+
+.markdown {
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    padding-bottom: 0.2rem;
+    border-bottom: solid 1px #ddd;
+  }
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.2rem;
+    border-bottom: solid 1px #ddd;
+  }
+  h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.2rem;
+    border-bottom: solid 1px #ddd;
+  }
+  code {
+    color: white;
+    background: #364549;
+  }
+  pre {
+    code {
+      color: white;
+      display: block;
+      width: 100%;
+      padding: 1.2rem 1rem;
+      background: #364549;
+    }
+  }
+  blockquote {
+    padding: 0rem 1rem;
+    border-left: 0.25em solid #dfe2e5;
+  }
+}
+
+//トップページ
+.top-wrapper {
+  width: 60%;
+  background-color: #ffffff;
+}
+
+.article-box {
+  border-bottom: solid 3px #F6F6F6;
+}
+
+.title {
+  color: black;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.article-date {
+  color:gray;
+}
+
+//記事ページ
+.article {
+  .title {
+    font-size: 2rem;
+  }
+  .tag {
+    background-color: #DDDDDD;
+    display: inline-flex;
+    padding: 0.3rem;
+    color: #555555;
+    border-radius: 0.3rem;
+  }
+  .article-header {
+    margin-bottom: 2rem;
+  }
 }

@@ -19,12 +19,12 @@
           <div class="card-header">
               プレビュー
           </div>
-          <div class="card-body p-1" id="markdown_preview"></div>
+          <div class="card-body markdown p-1" id="markdown_preview"></div>
         </div>
       </div>
   </div>
   <div class="post-page-footer">
-      <input type="submit" class="post-button m-1" value="Qiitaに投稿">
+      <input type="submit" class="post-button m-1" value="投稿">
   </div>
 </form>
 @endsection

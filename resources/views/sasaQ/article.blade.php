@@ -27,9 +27,8 @@
                     @endif
                 </div>
             </div>
-            <div class="article-body markdown">
-                {{$article->body}}
-            </div>
+{{--            ※注意　{{$article->body}}の前に空白が存在すると、pre要素になってしまい文の始めが意図しない表示になる--}}
+            <div class="article-body markdown">{{$article->body}}</div>
         </div>
     </div>
 @endsection

@@ -27,7 +27,7 @@
                     @endif
                 </div>
             </div>
-            <div class="article-body">
+            <div class="article-body markdown">
                 {{$article->body}}
             </div>
         </div>

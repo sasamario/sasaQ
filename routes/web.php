@@ -29,3 +29,6 @@ Route::post('/add', 'ArticleController@add')->name('add');
 
 //指定ID記事へのルート
 Route::get('/article/{id}', 'ArticleController@show')->name('show');
+
+//マイページへのルート
+Route::get('/mypage', 'ArticleController@showMyPage')->name('mypage');

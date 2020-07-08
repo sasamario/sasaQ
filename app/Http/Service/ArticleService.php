@@ -47,4 +47,12 @@ class ArticleService
     {
         return Article::find($id);
     }
+
+    /**
+     * @return Collection
+     */
+    public function showMyArticle(): Collection
+    {
+        return Article::where('user_id', Auth::id())->orderBy('date', 'desc')->get();
+    }
 }

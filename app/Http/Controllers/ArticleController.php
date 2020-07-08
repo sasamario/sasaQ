@@ -57,4 +57,14 @@ class ArticleController extends Controller
 
         return view('sasaQ.article', compact('article'));
     }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showMyPage()
+    {
+        $myArticles = $this->articleService->showMyArticle();
+
+        return view('sasaQ.mypage', compact('myArticles'));
+    }
 }

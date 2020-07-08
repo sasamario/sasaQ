@@ -74,9 +74,6 @@
 
 //記事ページ
 .article {
-  .title {
-    font-size: 2rem;
-  }
   .tag {
     background-color: #DDDDDD;
     display: inline-flex;
@@ -86,5 +83,14 @@
   }
   .article-header {
     margin-bottom: 2rem;
+    .title {
+      font-size: 2rem;
+    }
   }
+}
+
+//マイページ
+.my-article-title {
+  text-align: center;
+  font-size: 2rem;
 }

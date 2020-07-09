@@ -16,6 +16,8 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -56,6 +58,8 @@
                                 <a class="nav-link" href="{{route('create')}}">投稿</a>
                             </li>
                             <li class="nav-item dropdown">
+{{--                                aria-expanded：要素の閉開を表す　falseは閉--}}
+{{--                                aria-haspopup：ポップアップメニューが存在するかどうか示す--}}
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>

@@ -55,4 +55,33 @@ class ArticleService
     {
         return Article::where('user_id', Auth::id())->orderBy('date', 'desc')->get();
     }
+
+    /**
+     * @param Request $request
+     * @return Article
+     */
+    public function editArticle(Request $request): Article
+    {
+        return Article::find($request->article_id);
+    }
+
+    /**
+     * @param Request $request
+     */
+    public function updateArticle(Request $request): void
+    {
+        $tags = explode(' ', $request->tags);
+        $tag1 = $tags[0];
+        $tag2 = (isset($tags[1])) ? $tags[1] : null;
+        $tag3 = (isset($tags[2])) ? $tags[2] : null;
+
+        Article::where('article_id', $request->article_id)
+            ->update([
+                'title' => $request->title,
+                'tag1' => $tag1,
+                'tag2' => $tag2,
+                'tag3' => $tag3,
+                'body' => $request->body,
+            ]);
+    }
 }

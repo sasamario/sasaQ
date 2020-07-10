@@ -32,3 +32,9 @@ Route::get('/article/{id}', 'ArticleController@show')->name('show');
 
 //マイページへのルート
 Route::get('/mypage', 'ArticleController@showMyPage')->name('mypage');
+
+//編集ページへのルート
+Route::post('/mypage/edit', 'ArticleController@edit')->name('edit');
+
+//更新時のルート
+Route::post('/mypage/update', 'ArticleController@update')->name('update');

@@ -11,8 +11,16 @@
                         <i class="fas fa-ellipsis-h"></i>
                     </div>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="mypage-dropdown-item " href="#">編集 <i class="far fa-edit"></i></a>
-                        <a class="mypage-dropdown-item" href="#">削除 <i class="far fa-trash-alt"></i></a>
+                        <form action="{{route('edit')}}" method="post" class="mypage-form">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="article_id" value="{{$item->article_id}}">
+                            <button type="submit" class="mypage-form-button">編集 <i class="far fa-edit"></i></button>
+                        </form>
+                        <form action="#" method="post" class="mypage-form">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="article_id" value="{{$item->article_id}}">
+                            <button type="submit" class="mypage-form-button">削除 <i class="far fa-trash-alt"></i></button>
+                        </form>
                     </div>
                 </div>
                 <div class="article-date">

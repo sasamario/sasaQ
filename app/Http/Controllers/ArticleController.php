@@ -67,4 +67,26 @@ class ArticleController extends Controller
 
         return view('sasaQ.mypage', compact('myArticles'));
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit(Request $request)
+    {
+        $editArticle = $this->articleService->editArticle($request);
+
+        return view('sasaQ.edit', compact('editArticle'));
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request)
+    {
+        $this->articleService->updateArticle($request);
+
+        return redirect()->route('home');
+    }
 }

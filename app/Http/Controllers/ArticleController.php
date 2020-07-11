@@ -42,7 +42,7 @@ class ArticleController extends Controller
      */
     public function read()
     {
-        $articles = $this->articleService->readArticle();
+        $articles = $this->articleService->readArticles();
 
         return view('home', compact('articles'));
     }
@@ -63,9 +63,20 @@ class ArticleController extends Controller
      */
     public function showMyPage()
     {
-        $myArticles = $this->articleService->showMyArticle();
+        $myArticles = $this->articleService->showMyArticles();
 
         return view('sasaQ.mypage', compact('myArticles'));
+    }
+
+    /**
+     * @param int $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showMyPageArticle(int $id)
+    {
+        $article = $this->articleService->showArticle($id);
+
+        return view('sasaQ.myarticle', compact('article'));
     }
 
     /**
@@ -86,6 +97,17 @@ class ArticleController extends Controller
     public function update(Request $request)
     {
         $this->articleService->updateArticle($request);
+
+        return redirect()->route('home');
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function delete(Request $request)
+    {
+        $this->articleService->deleteArticle($request);
 
         return redirect()->route('home');
     }

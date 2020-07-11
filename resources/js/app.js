@@ -17,11 +17,11 @@ $(function() {
     });
 
     $('#markdown_editor_textarea').keyup(function() { //keyup()イベントは、押されたキーを話すとイベント発生
-        var html = marked(getHtml($(this).val())); //入力された値をval()で取得　marked()でマークダウン文字列をHTMLに変換
+        var html = marked(getHtml($(this).val())); //入力された値をval()で取得　marked()でマークダウン文字列をHTMLタグに変換
         $('#markdown_preview').html(html); //markdown_previewのhtml要素の書き換え
     });
 
-    // 個別の記事画面のマークダウンをHTMLに変換する
+    // 個別の記事画面のマークダウン文字列をHTMLタグに変換する
     var target = $('.article-body')
     var html = marked(getHtml(target.html()));
     $('.article-body').html(html);

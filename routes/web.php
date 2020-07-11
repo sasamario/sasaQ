@@ -33,8 +33,14 @@ Route::get('/article/{id}', 'ArticleController@show')->name('show');
 //マイページへのルート
 Route::get('/mypage', 'ArticleController@showMyPage')->name('mypage');
 
+//マイページの記事へのルート
+Route::get('/mypage/article/{id}', 'ArticleController@showMyPageArticle')->name('myarticle');
+
 //編集ページへのルート
 Route::post('/mypage/edit', 'ArticleController@edit')->name('edit');
 
 //更新時のルート
 Route::post('/mypage/update', 'ArticleController@update')->name('update');
+
+//削除時のルート
+Route::post('/mypage/delete', 'ArticleController@delete')->name('delete');

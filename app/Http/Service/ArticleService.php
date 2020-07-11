@@ -34,7 +34,7 @@ class ArticleService
     /**
      * @return Collection
      */
-    public function readArticle(): Collection
+    public function readArticles(): Collection
     {
         return Article::orderBy('date', 'desc')->get();
     }
@@ -51,7 +51,7 @@ class ArticleService
     /**
      * @return Collection
      */
-    public function showMyArticle(): Collection
+    public function showMyArticles(): Collection
     {
         return Article::where('user_id', Auth::id())->orderBy('date', 'desc')->get();
     }
@@ -83,5 +83,13 @@ class ArticleService
                 'tag3' => $tag3,
                 'body' => $request->body,
             ]);
+    }
+
+    /**
+     * @param Request $request
+     */
+    public function deleteArticle(Request $request): void
+    {
+        Article::where('article_id', $request->article_id)->where('user_id', Auth::id())->delete();
     }
 }

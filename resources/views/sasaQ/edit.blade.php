@@ -19,7 +19,8 @@
                     <div class="card-header">
                         プレビュー
                     </div>
-                    <div class="card-body markdown p-1" id="markdown_preview"></div>
+{{--                    Todo：キー入力しないとプレビューが表示されないため要修正--}}
+                    <div class="card-body markdown p-1" id="markdown_preview">本文入力欄にてキー入力するとプレビュー表示されます！</div>
                 </div>
             </div>
         </div>

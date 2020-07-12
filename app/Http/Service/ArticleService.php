@@ -45,7 +45,8 @@ class ArticleService
      */
     public function showArticle(int $id): Article
     {
-        return Article::find($id);
+        //Auth::id()で条件を付けないと、URLを変えればユーザーが他のユーザーの記事を編集できてしまう
+        return Article::where('user_id', Auth::id())->find($id);
     }
 
     /**

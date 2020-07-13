@@ -113,4 +113,13 @@ class ArticleService
     {
         return Article::where('title', 'LIKE', "%{$request->search}%")->orderBy('date', 'desc')->get();
     }
+
+    /**
+     * @param Request $request
+     * @return int
+     */
+    public function countArticles(Request $request): int
+    {
+        return Article::where('title', 'LIKE', "%{$request->search}%")->count();
+    }
 }

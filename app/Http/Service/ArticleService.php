@@ -33,6 +33,7 @@ class ArticleService
 
     /**
      * @return Collection
+     * トップページの記事データ取得の処理
      */
     public function readArticles(): Collection
     {
@@ -42,11 +43,11 @@ class ArticleService
     /**
      * @param int $id
      * @return Article
+     * 指定の記事IDのデータ取得処理
      */
     public function showArticle(int $id): Article
     {
-        //Auth::id()で条件を付けないと、URLを変えればユーザーが他のユーザーの記事を編集できてしまう
-        return Article::where('user_id', Auth::id())->find($id);
+        return Article::find($id);
     }
 
     /**
@@ -55,6 +56,16 @@ class ArticleService
     public function showMyArticles(): Collection
     {
         return Article::where('user_id', Auth::id())->orderBy('date', 'desc')->get();
+    }
+
+    /**
+     * @param int $id
+     * @return Article
+     * マイページからの指定記事IDのデータ取得処理　編集など行えるページのためログイン中のユーザーかどうか確認の処理を実装
+     */
+    public function showMyArticle(int $id): Article
+    {
+        return Article::where('user_id', Auth::id())->find($id);
     }
 
     /**

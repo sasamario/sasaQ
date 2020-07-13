@@ -104,4 +104,13 @@ class ArticleService
     {
         Article::where('article_id', $request->article_id)->where('user_id', Auth::id())->delete();
     }
+
+    /**
+     * @param Request $request
+     * @return Collection
+     */
+    public function searchArticles(Request $request): Collection
+    {
+        return Article::where('title', 'LIKE', "%{$request->search}%")->orderBy('date', 'desc')->get();
+    }
 }

@@ -119,7 +119,8 @@ class ArticleController extends Controller
     public function search(Request $request)
     {
         $articles = $this->articleService->searchArticles($request);
+        $count = $this->articleService->countArticles($request);
 
-        return view('home', compact('articles'));
+        return view('sasaQ.search', compact('articles', 'count'));
     }
 }

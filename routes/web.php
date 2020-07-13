@@ -44,3 +44,6 @@ Route::post('/mypage/update', 'ArticleController@update')->name('update');
 
 //削除時のルート
 Route::post('/mypage/delete', 'ArticleController@delete')->name('delete');
+
+//検索時のルート
+Route::get('/search', 'ArticleController@search')->name('search');

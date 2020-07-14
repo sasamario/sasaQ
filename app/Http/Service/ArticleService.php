@@ -2,6 +2,7 @@
 
 namespace App\Http\Service;
 
+use App\Http\Requests\ArticleRequest;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\Article;
@@ -10,9 +11,9 @@ use Illuminate\Support\Facades\Auth;
 class ArticleService
 {
     /**
-     * @param Request $request
+     * @param ArticleRequest $request
      */
-    public function addArticle(Request $request): void
+    public function addArticle(ArticleRequest $request): void
     {
         //explode関数でスペースを区切り文字として分割する
         $tags = explode(' ', $request->tags);
@@ -78,9 +79,9 @@ class ArticleService
     }
 
     /**
-     * @param Request $request
+     * @param ArticleRequest $request
      */
-    public function updateArticle(Request $request): void
+    public function updateArticle(ArticleRequest $request): void
     {
         $tags = explode(' ', $request->tags);
         $tag1 = $tags[0];
@@ -111,7 +112,7 @@ class ArticleService
      */
     public function searchArticles(Request $request): Collection
     {
-        return Article::where('title', 'LIKE', "%{$request->search}%")->orderBy('date', 'desc')->get();
+        return Article::where('body', 'LIKE', "%{$request->search}%")->orderBy('date', 'desc')->get();
     }
 
     /**
@@ -120,7 +121,7 @@ class ArticleService
      */
     public function countArticles(Request $request): int
     {
-        return Article::where('title', 'LIKE', "%{$request->search}%")->count();
+        return Article::where('body', 'LIKE', "%{$request->search}%")->count();
     }
 
     /**

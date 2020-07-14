@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ArticleRequest;
 use App\Http\Service\ArticleService;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,11 @@ class ArticleController extends Controller
         return view('sasaQ.create');
     }
 
-    public function add(Request $request)
+    /**
+     * @param ArticleRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function add(ArticleRequest $request)
     {
         $this->articleService->addArticle($request);
 
@@ -92,10 +97,10 @@ class ArticleController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param ArticleRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request)
+    public function update(ArticleRequest $request)
     {
         $this->articleService->updateArticle($request);
 

@@ -16,7 +16,7 @@
 
 {{--    編集ページで入力ミスがあった場合のアラート--}}
     @if (session('editErrorMessage'))
-        <div class="alert alert-danger alert-dismissible fade show mt-5 mb-0">
+        <div class="error-message alert alert-danger alert-dismissible fade show">
             {{ session('editErrorMessage') }}
             <button type="button" class="close" data-dismiss="alert" aria-label="閉じる">
                 <span aria-hidden="true">&times;</span>

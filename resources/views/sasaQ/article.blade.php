@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="top-wrapper content">
+    <div class="top-wrapper">
         <div class="article col-11 mx-auto py-3">
             <div class="article-header">
                 <div class="article-date">

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@include('layouts.error')
+
 @section('content')
 <form action="{{route('add')}}" method="post">
   {{ csrf_field() }}

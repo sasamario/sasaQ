@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@include('layouts.error')
+
 @section('content')
     <div class="top-wrapper user-wrapper">
         <div class="user-box col-11 mx-auto">

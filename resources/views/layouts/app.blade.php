@@ -87,6 +87,12 @@
             </div>
         </nav>
 
+        <div class="container">
+            <div class="justify-content-center">
+                @yield('error-message')
+            </div>
+        </div>
+
         <main class="py-4">
             @yield('content')
         </main>

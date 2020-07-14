@@ -55,6 +55,8 @@
 //トップページ
 .top-wrapper {
   width: 60%;
+  margin: 0 auto;
+  padding: 1rem 0;
   background-color: #ffffff;
 }
 
@@ -105,5 +107,40 @@
   display: inline-block;
   .myarticle-form-button {
     margin: 0 0.75rem;
+  }
+}
+.user-wrapper {
+  margin-bottom: 1.5rem;
+  .user-box {
+    height: 200px;
+    .user-right-box {
+      height: 100%;
+      .user-icon {
+        height: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .fa-user {
+          border:3px solid black;
+          border-radius: 50%;
+          padding: 0.75rem;
+        }
+      }
+      .user-name {
+        text-align: center;
+      }
+    }
+    .user-info {
+      height: 100%;
+      .article-count {
+        font-size: 2rem;
+        height: 100%;
+        margin-bottom: 0;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+      }
+    }
   }
 }

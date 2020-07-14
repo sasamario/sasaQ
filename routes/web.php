@@ -39,6 +39,11 @@ Route::get('/mypage/article/{id}', 'ArticleController@showMyPageArticle')->name(
 //編集ページへのルート
 Route::post('/mypage/edit', 'ArticleController@edit')->name('edit');
 
+//編集ページで入力に誤りがあった場合のリダイレクト時のルート　バリデーション実行後、getでリダイレクトされるため
+Route::get('/mypage/edit', function() {
+   return redirect()->route('mypage')->with('editErrorMessage', 'タイトル・タグ・本文は必ず入力してください（編集は完了していません）');
+});
+
 //更新時のルート
 Route::post('/mypage/update', 'ArticleController@update')->name('update');
 

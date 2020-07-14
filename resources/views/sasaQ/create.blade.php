@@ -2,6 +2,8 @@
 
 @include('layouts.error')
 
+@include('layouts.helpmodal')
+
 @section('content')
 <form action="{{route('add')}}" method="post">
   {{ csrf_field() }}
@@ -11,7 +13,8 @@
       <div class="col-6 p-0">
           <div class="card">
             <div class="card-header">
-              本文
+              <div class="float-left">本文</div>
+              <div class="float-right help-button" data-toggle="modal" data-target="#helpModal"><i class="far fa-question-circle"></i></div>
             </div>
             <textarea class="card-body p-1" name="body" id="markdown_editor_textarea" cols="30" rows="15" class="form-control">{{ old('body') }}</textarea>
           </div>

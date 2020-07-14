@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="top-wrapper content mx-auto py-3">
+    <div class="top-wrapper content">
         <div class="search-result col-11 mx-auto">
             検索件数：{{$count}}件
         </div>

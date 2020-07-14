@@ -122,4 +122,12 @@ class ArticleService
     {
         return Article::where('title', 'LIKE', "%{$request->search}%")->count();
     }
+
+    /**
+     * @return int
+     */
+    public function countMyArticles(): int
+    {
+        return Article::where('user_id', Auth::id())->count();
+    }
 }

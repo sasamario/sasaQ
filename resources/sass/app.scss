@@ -8,6 +8,10 @@
 @import '~bootstrap/scss/bootstrap';
 
 //投稿フォーム
+.help-button {
+  cursor: pointer;
+}
+
 #markdown_preview {
   height: 355px;
   overflow-y: scroll;

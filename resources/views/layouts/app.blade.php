@@ -87,7 +87,7 @@
             </div>
         </nav>
 
-        <div class="container">
+        <div class="error-content">
             <div class="justify-content-center">
                 @yield('error-message')
             </div>

@@ -95,6 +95,34 @@
   }
 }
 
+//返信フォーム
+.reply-wrapper {
+  width: 60%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border: 1px solid #EEEEEE;
+  .form-title {
+    padding: 0.25rem;
+    margin: 0;
+    color: #999999;
+  }
+  .reply-form {
+    padding: 0.25rem;
+    .reply-body {
+      width: 100%;
+      padding: 0.5rem;
+      background: #F5F5F5;
+      border: 1px solid #EEEEEE;
+    }
+    .reply-button {
+      color: white;
+      border: 1px solid #FFBC61;
+      background: #FFC679;
+    }
+  }
+}
+
+
 //マイページ
 .my-article-title {
   text-align: center;

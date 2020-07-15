@@ -97,6 +97,10 @@
             @yield('content')
         </main>
 
+        <div class="reply-content py-4">
+            @yield('reply-form')
+        </div>
+
         @yield('help-modal')
     </div>
 </body>

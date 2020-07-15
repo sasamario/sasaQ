@@ -97,7 +97,11 @@
             @yield('content')
         </main>
 
-        <div class="reply-content py-4">
+        <div class="replies-content">
+            @yield('replies')
+        </div>
+
+       <div class="reply-content py-4">
             @yield('reply-form')
         </div>
 

@@ -12,7 +12,8 @@
                 <p class="user-name">〇〇さん</p>
             </div>
             <div class="user-info float-right col-7">
-                <p class="article-count">記事投稿数：{{$count}}</p>
+                <p class="article-count">記事投稿数：{{$myArticlesCount}}</p>
+                <p class="reply-count">返信数：{{$myRepliesCount}}</p>
             </div>
         </div>
     </div>

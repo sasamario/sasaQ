@@ -52,6 +52,15 @@ class ArticleService
     }
 
     /**
+     * @param int $id
+     * @return Collection
+     */
+    public function showArticleReply(int $id): Collection
+    {
+        return Article::find($id)->replies;
+    }
+
+    /**
      * @return Collection
      */
     public function showMyArticles(): Collection

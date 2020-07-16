@@ -66,17 +66,6 @@ class ArticleController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function showMyPage()
-    {
-        $myArticles = $this->articleService->showMyArticles();
-        $count = $this->articleService->countMyArticles();
-
-        return view('sasaQ.mypage', compact('myArticles', 'count'));
-    }
-
-    /**
      * @param int $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

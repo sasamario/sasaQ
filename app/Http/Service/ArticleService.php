@@ -61,14 +61,6 @@ class ArticleService
     }
 
     /**
-     * @return Collection
-     */
-    public function showMyArticles(): Collection
-    {
-        return Article::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
-    }
-
-    /**
      * @param int $id
      * @return Article
      * マイページからの指定記事IDのデータ取得処理　編集など行えるページのためログイン中のユーザーかどうか確認の処理を実装
@@ -131,13 +123,5 @@ class ArticleService
     public function countArticles(Request $request): int
     {
         return Article::where('body', 'LIKE', "%{$request->search}%")->count();
-    }
-
-    /**
-     * @return int
-     */
-    public function countMyArticles(): int
-    {
-        return Article::where('user_id', Auth::id())->count();
     }
 }

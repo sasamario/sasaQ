@@ -30,6 +30,9 @@ Route::post('/add', 'ArticleController@add')->name('add');
 //指定ID記事へのルート
 Route::get('/article/{id}', 'ArticleController@show')->name('show');
 
+//返信内容追加のルート
+Route::post('/article/reply', 'ReplyController@add')->name('addReply');
+
 //マイページへのルート
 Route::get('/mypage', 'ArticleController@showMyPage')->name('mypage');
 

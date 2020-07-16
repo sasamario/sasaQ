@@ -59,8 +59,10 @@ class ArticleController extends Controller
     public function show(int $id)
     {
         $article = $this->articleService->showArticle($id);
+        $replies = $this->articleService->showArticleReply($id);
+        $isReplies = $this->articleService->showArticleReply($id)->isEmpty();
 
-        return view('sasaQ.article', compact('article'));
+        return view('sasaQ.article', compact('article', 'replies', 'isReplies'));
     }
 
     /**

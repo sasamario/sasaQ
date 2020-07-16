@@ -33,8 +33,8 @@ Route::get('/article/{id}', 'ArticleController@show')->name('show');
 //返信内容追加のルート
 Route::post('/article/reply', 'ReplyController@add')->name('addReply');
 
-//マイページへのルート
-Route::get('/mypage', 'ArticleController@showMyPage')->name('mypage');
+//マイページへのルート　返信数取得のためUserControllerからリレーションを用いて取得している
+Route::get('/mypage', 'UserController@showMyPage')->name('mypage');
 
 //マイページの記事へのルート
 Route::get('/mypage/article/{id}', 'ArticleController@showMyPageArticle')->name('myarticle');

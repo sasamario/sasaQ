@@ -3,7 +3,6 @@
 namespace App\Http\Service;
 
 use App\Reply;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +17,6 @@ class ReplyService
             'user_id' => Auth::id(),
             'article_id' => $request->article_id,
             'body' => $request->body,
-            'reply_time' => Carbon::now(),
         ]);
     }
 }

@@ -42,7 +42,7 @@
         @foreach ($replies as $reply)
             <div class="reply-box col-11 mx-auto py-3">
                 <div class="reply-time">
-                    {{$reply->reply_time}}
+                    {{$reply->created_at}}
                 </div>
                 <div class="reply-body">
                     {{$reply->body}}

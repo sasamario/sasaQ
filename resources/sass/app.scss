@@ -64,7 +64,7 @@
   background-color: #ffffff;
 }
 
-.article-box {
+.article-box, .reply-box {
   border-bottom: solid 3px #F6F6F6;
 }
 
@@ -92,6 +92,17 @@
     .title {
       font-size: 2rem;
     }
+  }
+}
+
+//返信コメント欄
+.replies-wrapper {
+  width: 60%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  .replies-title {
+    font-size: 1.3rem;
+    margin-bottom: 0rem;
   }
 }
 

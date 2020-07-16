@@ -38,7 +38,7 @@ class ArticleService
      */
     public function readArticles(): Collection
     {
-        return Article::orderBy('date', 'desc')->get();
+        return Article::orderBy('created_at', 'desc')->get();
     }
 
     /**
@@ -65,7 +65,7 @@ class ArticleService
      */
     public function showMyArticles(): Collection
     {
-        return Article::where('user_id', Auth::id())->orderBy('date', 'desc')->get();
+        return Article::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
     }
 
     /**
@@ -121,7 +121,7 @@ class ArticleService
      */
     public function searchArticles(Request $request): Collection
     {
-        return Article::where('body', 'LIKE', "%{$request->search}%")->orderBy('date', 'desc')->get();
+        return Article::where('body', 'LIKE', "%{$request->search}%")->orderBy('created_at', 'desc')->get();
     }
 
     /**

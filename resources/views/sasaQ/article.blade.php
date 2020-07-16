@@ -33,14 +33,34 @@
     </div>
 @endsection
 
+@section('replies')
+    <div class="replies-wrapper">
+        <p class="replies-title col-11 mx-auto"><i class="fas fa-comments"></i> コメント</p>
+        @if ($isReplies)
+            <p class="no-reply col-11 mx-auto">コメントはありません</p>
+        @endif
+        @foreach ($replies as $reply)
+            <div class="reply-box col-11 mx-auto py-3">
+                <div class="reply-time">
+                    {{$reply->reply_time}}
+                </div>
+                <div class="reply-body">
+                    {{$reply->body}}
+                </div>
+            </div>
+        @endforeach
+    </div>
+@endsection
+
 @section('reply-form')
     <div class="reply-wrapper">
         <p class="form-title">返信フォーム</p>
         <div class="reply-form">
-            <form action="#" method="post">
+            <form action="{{route('addReply')}}" method="post">
                 {{ csrf_field() }}
                 <textarea class="reply-body" style="width:100%;" name="body" cols="30" rows="3" placeholder="テキストを入力"></textarea>
                 <div class="text-right">
+                    <input type="hidden" name="article_id" value="{{$article->article_id}}">
                     <input class="reply-button" type="submit" value="返信">
                 </div>
             </form>

@@ -10,6 +10,9 @@ class Article extends Model
 
   protected $fillable = ['user_id', 'title', 'tag1', 'tag2', 'tag3', 'body', 'date'];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
   public function replies()
   {
       //Articleモデルでは、主キーをidではなくarticle_idと設定している。親モデルの主キー名がidでない場合、第三引数で指定する必要がある！

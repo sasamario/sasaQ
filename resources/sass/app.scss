@@ -57,7 +57,7 @@
 }
 
 //トップページ
-.top-wrapper {
+.top-wrapper, .replies-wrapper {
   width: 60%;
   margin: 0 auto;
   padding: 1rem 0;
@@ -71,18 +71,25 @@
 .title {
   color: black;
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
-.article-date {
+.article-up-detail {
   color:gray;
+  .writer-name {
+    display: inline-block;
+  }
+  .article-up-date {
+    display: inline-block;
+    float: right;
+  }
 }
 
 //記事ページ
 .article {
   .tag {
     background-color: #DDDDDD;
-    display: inline-flex;
+    display: inline-block;
     padding: 0.3rem;
     color: #555555;
     border-radius: 0.3rem;
@@ -96,14 +103,13 @@
 }
 
 //返信コメント欄
-.replies-wrapper {
-  width: 60%;
-  margin: 0 auto;
-  background-color: #ffffff;
-  .replies-title {
-    font-size: 1.3rem;
-    margin-bottom: 0rem;
-  }
+.replies-title {
+  font-size: 1.3rem;
+  margin-bottom: 0rem;
+}
+.reply-time {
+  text-align: right;
+  color: gray;
 }
 
 //返信フォーム
@@ -156,7 +162,7 @@
   margin-bottom: 1.5rem;
   .user-box {
     height: 200px;
-    .user-right-box {
+    .user-left-box {
       height: 100%;
       .user-icon {
         height: 80%;
@@ -173,16 +179,13 @@
         text-align: center;
       }
     }
-    .user-info {
+    .user-right-box {
       height: 100%;
-      .article-count {
-        font-size: 2rem;
-        height: 100%;
-        margin-bottom: 0;
-        display: flex;
+      padding: 1rem 0;
+      .article-count, .reply-count {
+        font-size: 1.8rem;
         text-align: center;
-        align-items: center;
-        justify-content: center;
+        margin: 1rem 0;
       }
     }
   }

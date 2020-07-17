@@ -18,4 +18,12 @@ class Article extends Model
       //Articleモデルでは、主キーをidではなくarticle_idと設定している。親モデルの主キー名がidでない場合、第三引数で指定する必要がある！
       return $this->hasMany('App\Reply', 'article_id', 'article_id');
   }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+  public function user()
+  {
+      return $this->belongsTo('App\User');
+  }
 }

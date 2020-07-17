@@ -4,8 +4,9 @@
     <div class="top-wrapper">
         <div class="article col-11 mx-auto py-3">
             <div class="article-header">
-                <div class="article-date">
-                    {{$article->date}}
+                <div class="article-up-detail">
+                    <div class="writer-name">投稿者：{{$writerName}}</div>
+                    <div class="article-up-date">{{$article->date}}</div>
                 </div>
                 <div class="title">
                     {{$article->title}}
@@ -41,9 +42,7 @@
         @endif
         @foreach ($replies as $reply)
             <div class="reply-box col-11 mx-auto py-3">
-                <div class="reply-time">
-                    {{$reply->created_at}}
-                </div>
+                <div class="reply-time">{{$reply->created_at}}</div>
                 <div class="reply-body">
                     {{$reply->body}}
                 </div>
@@ -58,7 +57,7 @@
         <div class="reply-form">
             <form action="{{route('addReply')}}" method="post">
                 {{ csrf_field() }}
-                <textarea class="reply-body" style="width:100%;" name="body" cols="30" rows="3" placeholder="テキストを入力"></textarea>
+                <textarea class="reply-body" name="body" cols="30" rows="3" placeholder="テキストを入力"></textarea>
                 <div class="text-right">
                     <input type="hidden" name="article_id" value="{{$article->article_id}}">
                     <input class="reply-button" type="submit" value="返信">

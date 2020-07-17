@@ -53,6 +53,15 @@ class ArticleService
 
     /**
      * @param int $id
+     * @return string
+     */
+    public function getArticleWriterName(int $id): string
+    {
+        return Article::find($id)->user->name;
+    }
+
+    /**
+     * @param int $id
      * @return Collection
      */
     public function showArticleReply(int $id): Collection

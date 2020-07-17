@@ -61,8 +61,9 @@ class ArticleController extends Controller
         $article = $this->articleService->showArticle($id);
         $replies = $this->articleService->showArticleReply($id);
         $isReplies = $this->articleService->showArticleReply($id)->isEmpty();
+        $writerName = $this->articleService->getArticleWriterName($id);
 
-        return view('sasaQ.article', compact('article', 'replies', 'isReplies'));
+        return view('sasaQ.article', compact('article', 'replies', 'isReplies', 'writerName'));
     }
 
     /**

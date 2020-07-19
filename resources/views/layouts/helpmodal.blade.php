@@ -52,6 +52,15 @@
                     [ --- ]or[ ___ ]or[ *** ]と３つ以上の連続で記述すると水平線になります<br/>
                         例）---</p>
 
+                    <p><strong>【リンク】</strong><br/>
+                        [表示文字](リンクURL)でリンクを記述できる<br/>
+                        例）[Google](https://www.google.co.jp/)<br/>
+                        また、URLを記載するだけでも自動的にリンクになる！</p>
+
+                    <p><strong>【取り消し線】</strong><br/>
+                        [ ~~ ]で囲むことで取り消し線になる<br/>
+                        例）~~取り消したい~~</p>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>

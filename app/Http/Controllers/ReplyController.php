@@ -31,6 +31,6 @@ class ReplyController extends Controller
     {
         $this->replyService->addReply($request);
 
-        return redirect()->route('home');
+        return redirect()->route('show', ['id' => $request->article_id]);
     }
 }

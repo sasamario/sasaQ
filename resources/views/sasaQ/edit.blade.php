@@ -4,7 +4,7 @@
 
 @section('content')
     <form action="{{route('update')}}" method="post">
-        {{ csrf_field() }}
+        @csrf
         <input type="text" class="form-control m-1" id="title-input" placeholder="タイトル" name="title" value="{{$editArticle->title}}">
         <input type="text" class="form-control m-1" placeholder="プログラミング技術に関するタグをスペース区切りで3つまで入力" name="tags" value="{{$editArticle->tag1}} {{$editArticle->tag2}} {{$editArticle->tag3}}">
         <div class="row justify-content-center mx-1">

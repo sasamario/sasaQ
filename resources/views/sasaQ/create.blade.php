@@ -6,7 +6,7 @@
 
 @section('content')
 <form action="{{route('add')}}" method="post">
-  {{ csrf_field() }}
+  @csrf
   <input type="text" class="form-control m-1" id="title-input" placeholder="タイトル" name="title" value="{{ old('title') }}">
   <input type="text" class="form-control m-1" placeholder="プログラミング技術に関するタグをスペース区切りで3つまで入力" name="tags" value="{{ old('tags') }}">
   <div class="row justify-content-center mx-1">

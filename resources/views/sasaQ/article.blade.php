@@ -56,7 +56,7 @@
         <p class="form-title">返信フォーム</p>
         <div class="reply-form">
             <form action="{{route('addReply')}}" method="post">
-                {{ csrf_field() }}
+                @csrf
                 <textarea class="reply-body" name="body" cols="30" rows="3" placeholder="テキストを入力"></textarea>
                 <div class="text-right">
                     <input type="hidden" name="article_id" value="{{$article->article_id}}">

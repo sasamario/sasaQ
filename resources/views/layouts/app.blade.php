@@ -52,7 +52,7 @@
                             @endif
                         @else
                             <form action="{{route('search')}}" method="get" class="my-auto">
-                                {{csrf_field()}}
+                                @csrf
                                 <input type="search" name="search" placeholder="キーワードを入力" >
                             </form>
                             <li class="nab-item">

@@ -141,10 +141,61 @@
 
 
 //マイページ
-.my-article-title {
-  text-align: center;
-  font-size: 2rem;
+.mypage-wrapper {
+  width: 90%;
+  margin: 0 auto;
 }
+.mypage-left-wrapper {
+  background-color: #ffffff;
+  padding: 1rem;
+  margin-right: 1rem;
+  .mypage-article-wrapper {
+    width: 90%;
+    margin: 0 auto;
+    .my-article-title {
+      text-align: center;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.user-box {
+  background-color: #ffffff;
+  //ユーザー写真・名前のbox
+  .user-left-box {
+    margin: 0.5rem;
+    .user-icon {
+      height: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .fa-user {
+        border:3px solid black;
+        border-radius: 50%;
+        padding: 0.5rem;
+      }
+    }
+    .user-name {
+      text-align: center;
+      margin-bottom: 0rem;
+    }
+  }
+  //ユーザーの記事数・返信数のbox
+  .user-right-box {
+    padding: 1rem 0;
+    .article-count, .reply-count {
+      font-size: 1.0rem;
+      text-align: center;
+      margin: 0.5rem 0;
+    }
+  }
+}
+
+.replies-box {
+  background-color: #ffffff;
+}
+
+//マイページの記事ページ
 .article-title-right {
   cursor: pointer;
 }
@@ -158,38 +209,8 @@
     margin: 0 0.75rem;
   }
 }
-.user-wrapper {
-  margin-bottom: 1.5rem;
-  .user-box {
-    height: 200px;
-    .user-left-box {
-      height: 100%;
-      .user-icon {
-        height: 80%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        .fa-user {
-          border:3px solid black;
-          border-radius: 50%;
-          padding: 0.75rem;
-        }
-      }
-      .user-name {
-        text-align: center;
-      }
-    }
-    .user-right-box {
-      height: 100%;
-      padding: 1rem 0;
-      .article-count, .reply-count {
-        font-size: 1.8rem;
-        text-align: center;
-        margin: 1rem 0;
-      }
-    }
-  }
-}
+
+
 
 .error-message {
   width: 60%;

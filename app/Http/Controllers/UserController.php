@@ -24,6 +24,7 @@ class UserController extends Controller
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Todo:ユーザーの返信データを渡す処理の実装をすること
      */
     public function showMyPage()
     {

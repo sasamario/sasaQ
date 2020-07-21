@@ -17,6 +17,14 @@ class UserService
     }
 
     /**
+     * @return Collection
+     */
+    public function showMyReplies(): Collection
+    {
+        return User::find(Auth::id())->replies;
+    }
+
+    /**
      * @return int
      */
     public function countMyArticles(): int

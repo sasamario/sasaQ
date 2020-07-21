@@ -144,56 +144,67 @@
 .mypage-wrapper {
   width: 90%;
   margin: 0 auto;
-}
-.mypage-left-wrapper {
-  background-color: #ffffff;
-  padding: 1rem;
-  margin-right: 1rem;
-  .mypage-article-wrapper {
-    width: 90%;
-    margin: 0 auto;
-    .my-article-title {
-      text-align: center;
-      font-size: 1.5rem;
-    }
-  }
-}
-
-.user-box {
-  background-color: #ffffff;
-  //ユーザー写真・名前のbox
-  .user-left-box {
-    margin: 0.5rem;
-    .user-icon {
-      height: 80%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      .fa-user {
-        border:3px solid black;
-        border-radius: 50%;
-        padding: 0.5rem;
+  //左のコンテンツ
+  .mypage-left-wrapper {
+    background-color: #ffffff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    .mypage-article-wrapper {
+      width: 90%;
+      margin: 0 auto;
+      .my-article-title {
+        text-align: center;
+        font-size: 1.5rem;
       }
     }
-    .user-name {
-      text-align: center;
-      margin-bottom: 0rem;
-    }
   }
-  //ユーザーの記事数・返信数のbox
-  .user-right-box {
-    padding: 1rem 0;
-    .article-count, .reply-count {
-      font-size: 1.0rem;
-      text-align: center;
-      margin: 0.5rem 0;
+
+  //右のコンテンツ
+  .mypage-right-wrapper {
+    padding: 0;
+    margin-bottom: 1rem;
+
+    .user-box {
+      background-color: #ffffff;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      //ユーザー写真・名前のbox
+      .user-left-box {
+        margin: 0.5rem;
+        padding: 0rem;
+        .user-icon {
+          height: 80%;
+          display: flex;
+          justify-content: center;
+          .fa-user {
+            border:3px solid black;
+            border-radius: 50%;
+            padding: 0.5rem;
+          }
+        }
+        .user-name {
+          text-align: center;
+          margin-bottom: 0rem;
+        }
+      }
+      //ユーザーの記事数・返信数のbox
+      .user-right-box {
+        padding: 1rem 0;
+        .article-count, .reply-count {
+          font-size: 1.0rem;
+          text-align: center;
+          margin: 0.5rem 0;
+        }
+      }
+    }
+    //返信box
+    .replies-box {
+      background-color: #ffffff;
+      padding: 0.5rem;
     }
   }
 }
 
-.replies-box {
-  background-color: #ffffff;
-}
 
 //マイページの記事ページ
 .article-title-right {

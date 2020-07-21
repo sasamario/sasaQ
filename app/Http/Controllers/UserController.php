@@ -29,10 +29,11 @@ class UserController extends Controller
     public function showMyPage()
     {
         $myArticles = $this->userService->showMyArticles();
+        $myReplies = $this->userService->showMyReplies();
         $myArticlesCount = $this->userService->countMyArticles();
         $myRepliesCount = $this->userService->countMyReplies();
 
-        return view('sasaQ.mypage', compact('myArticles', 'myArticlesCount', 'myRepliesCount'));
+        return view('sasaQ.mypage', compact('myArticles', 'myReplies', 'myArticlesCount', 'myRepliesCount'));
 
     }
 }

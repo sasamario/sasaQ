@@ -4,6 +4,7 @@ namespace App\Http\Service;
 
 use App\User;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 
 class UserService
@@ -17,11 +18,15 @@ class UserService
     }
 
     /**
-     * @return Collection
+     * @return LengthAwarePaginator
      */
-    public function showMyReplies(): Collection
+    public function showMyReplies(): LengthAwarePaginator
     {
-        return User::find(Auth::id())->replies;
+        //リレーションでは、paginateの実装が難しいためjoinメソッドを使用
+        return User::join('replies', 'users.id', '=', 'replies.user_id')
+            ->where('id', Auth::id())
+            ->orderBy('replies.created_at', 'desc')
+            ->paginate(5);
     }
 
     /**

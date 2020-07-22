@@ -6,15 +6,20 @@ use App\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 
 class UserService
 {
     /**
-     * @return Collection
+     * @return LengthAwarePaginator
      */
-    public function showMyArticles(): Collection
+    public function showMyArticles(): LengthAwarePaginator
     {
-        return User::find(Auth::id())->articles;
+        return User::join('articles', 'users.id', '=', 'articles.user_id')
+            ->where('id', Auth::id())
+            ->orderBy('articles.created_at', 'desc')
+            ->paginate(10, ["*"], 'articlepage')
+            ->appends(["replypage" => Request::get('replypage')]); //ページネーションリンクにクエリ文字(例：replypage=2)を追加　
     }
 
     /**
@@ -26,7 +31,8 @@ class UserService
         return User::join('replies', 'users.id', '=', 'replies.user_id')
             ->where('id', Auth::id())
             ->orderBy('replies.created_at', 'desc')
-            ->paginate(5);
+            ->paginate(10, ["*"], 'replypage')
+            ->appends(["articlepage" => Request::get('articlepage')]);
     }
 
     /**

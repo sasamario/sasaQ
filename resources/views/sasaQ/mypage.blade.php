@@ -11,7 +11,7 @@
                     <div class="user-icon">
                         <i class="fas fa-user fa-3x"></i>
                     </div>
-                    <p class="user-name">{{ Auth::user()->name }}様</p>
+                    <p class="user-name">{{ Auth::user()->name }}さん</p>
                 </div>
                 <div class="user-right-box float-right col-5">
                     <p class="article-count">総投稿数：{{$myArticlesCount}}</p>
@@ -31,6 +31,9 @@
                         </div>
                     </div>
                 @endforeach
+                <div class="articles-paginate row justify-content-center mt-4">
+                    {{ $myArticles->links() }}
+                </div>
             </div>
         </div>
 
@@ -45,7 +48,7 @@
                         </div>
                     </div>
                 @endforeach
-                <div class="replies-paginate row justify-content-center">
+                <div class="replies-paginate row justify-content-center mt-4">
                     {{ $myReplies->links() }}
                 </div>
             </div>

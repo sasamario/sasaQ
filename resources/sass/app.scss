@@ -111,6 +111,10 @@
   text-align: right;
   color: gray;
 }
+.reply-comment {
+  //入力された連続する空白や、改行を反映させる
+  white-space: pre-wrap;
+}
 
 //返信フォーム
 .reply-wrapper {

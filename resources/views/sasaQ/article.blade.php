@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@include('layouts.error')
+
 @section('content')
     <div class="top-wrapper">
         <div class="article col-11 mx-auto py-3">

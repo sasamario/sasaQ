@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ReplyRequest;
 use App\Http\Service\ReplyService;
 
 class ReplyController extends Controller
@@ -23,11 +23,10 @@ class ReplyController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param ReplyRequest $request
      * @return \Illuminate\Http\RedirectResponse
-     * Todo:バリデーション要設定！！！
      */
-    public function add(Request $request)
+    public function add(ReplyRequest $request)
     {
         $this->replyService->addReply($request);
 

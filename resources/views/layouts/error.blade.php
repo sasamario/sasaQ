@@ -1,7 +1,7 @@
 @section('error-message')
 {{--    バリデーションエラーがあった場合のアラート--}}
     @if (count($errors) > 0)
-        <div class="alert alert-danger alert-dismissible fade show mt-5 mb-0">
+        <div class="error-message alert alert-danger alert-dismissible fade show mt-5 mb-0">
             <p>入力に問題があります。再入力してください。</p>
             <ul>
                 @foreach ($errors->all() as $error)

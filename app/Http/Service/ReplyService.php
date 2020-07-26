@@ -2,16 +2,16 @@
 
 namespace App\Http\Service;
 
+use App\Http\Requests\ReplyRequest;
 use App\Reply;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ReplyService
 {
     /**
-     * @param Request $request
+     * @param ReplyRequest $request
      */
-    public function addReply(Request $request): void
+    public function addReply(ReplyRequest $request): void
     {
         Reply::create([
             'user_id' => Auth::id(),

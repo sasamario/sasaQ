@@ -31,7 +31,7 @@ class UserService
         return User::join('replies', 'users.id', '=', 'replies.user_id')
             ->where('id', Auth::id())
             ->orderBy('replies.created_at', 'desc')
-            ->paginate(10, ["*"], 'replypage')
+            ->paginate(8, ["*"], 'replypage')
             ->appends(["articlepage" => Request::get('articlepage')]);
     }
 

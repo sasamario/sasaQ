@@ -43,9 +43,7 @@
                 @foreach ($myReplies as $reply)
                     <div class="reply-box col-11 mx-auto py-3">
                         <div class="reply-time">{{$reply->created_at}}</div>
-                        <div class="reply-body">
-                            {{$reply->body}}
-                        </div>
+                        <div class="reply-comment">{{$reply->body}}</div>
                     </div>
                 @endforeach
                 <div class="replies-paginate row justify-content-center mt-4">

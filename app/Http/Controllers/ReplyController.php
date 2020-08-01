@@ -44,4 +44,15 @@ class ReplyController extends Controller
 
         return view('sasaQ.editReply', compact('editReply'));
     }
+
+    /**
+     * @param ReplyRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(ReplyRequest $request)
+    {
+        $this->replyService->updateReply($request);
+
+        return redirect()->route('home');
+    }
 }

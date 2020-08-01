@@ -29,4 +29,13 @@ class ReplyService
     {
         return Reply::find($request->reply_id);
     }
+
+    /**
+     * @param ReplyRequest $request
+     */
+    public function updateReply(ReplyRequest $request): void
+    {
+        Reply::where('reply_id', $request->reply_id)
+            ->update(['body' => $request->body]);
+    }
 }

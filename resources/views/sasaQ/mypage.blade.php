@@ -42,7 +42,23 @@
                 <p class="replies-title">今までのコメント</p>
                 @foreach ($myReplies as $reply)
                     <div class="reply-box col-11 mx-auto py-3">
-                        <div class="reply-time">{{$reply->created_at}}</div>
+                        <div class="reply-top">
+                            {{-- ドロップダウンメニュー --}}
+                            <div class="float-right dropdown" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-h reply-dot"></i>
+                            </div>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <form action="{{route('editReply')}}" method="post" class="dropdown-form">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="reply_id" value="{{$reply->reply_id}}">
+                                    <button type="submit" class="form-edit-button">編集 <i class="far fa-edit"></i></button>
+                                </form>
+                                <button type="button" class="form-delete-button" data-toggle="modal" data-target="#deleteModal">削除 <i class="far fa-trash-alt"></i></button>
+                            </div>
+
+                            <div class="reply-time">{{$reply->created_at}}</div>
+                        </div>
+
                         <div class="reply-comment">{{$reply->body}}</div>
                     </div>
                 @endforeach

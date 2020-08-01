@@ -11,9 +11,9 @@ import marked from 'marked';
 // マークダウンをプレビュー画面に表示する
 $(function() {
     marked.setOptions({
-        langPrefix: '',
-        breaks : true, //改行オプション
-        sanitize: true,
+        // langPrefix: '', // code要素にdefaultで付くlangage-を削除 codeタグのクラス名の接頭辞に関するオプション
+        breaks : true, //改行オプション これをtrueにすることで改行が反映される
+        sanitize: true, //サニタイズ処理のオプション　これがないと攻撃的なスクリプトを実行されてしまう
     });
 
     $('#markdown_editor_textarea').keyup(function() { //keyup()イベントは、押されたキーを話すとイベント発生

@@ -24,7 +24,7 @@ class ArticleRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title' => 'required|unique:articles|max:255', //unique データベース内に同じ値がないかチェック
             'tags' => 'required',
             'body' => 'required',
         ];
@@ -37,6 +37,8 @@ class ArticleRequest extends FormRequest
     {
         return [
             'title.required' => 'タイトルは必ず入力してください',
+            'title.unique' => 'すでに同じタイトルの記事があるためタイトルを変更してください',
+            'title.max' => '最大文字数は255文字です。',
             'tags.required' => 'タグは最低１つは必ず入力してください',
             'body.required' => '本文は必ず入力してください',
         ];

@@ -58,3 +58,6 @@ Route::get('/search', 'ArticleController@search')->name('search');
 
 //返信コメントの編集ページへのルート
 Route::post('/mypage/reply/edit', 'ReplyController@edit')->name('editReply');
+
+//返信コメントの更新時のルート
+Route::post('/mypage/reply/update', 'ReplyController@update')->name('updateReply');

@@ -37,12 +37,12 @@
                     <i class="fas fa-ellipsis-h"></i>
                 </div>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <form action="{{route('edit')}}" method="post" class="myarticle-form">
+                    <form action="{{route('edit')}}" method="post" class="dropdown-form">
                         {{ csrf_field() }}
                         <input type="hidden" name="article_id" value="{{$article->article_id}}">
-                        <button type="submit" class="myarticle-form-button">編集 <i class="far fa-edit"></i></button>
+                        <button type="submit" class="form-edit-button">編集 <i class="far fa-edit"></i></button>
                     </form>
-                    <button type="button" class="myarticle-form-button" data-toggle="modal" data-target="#deleteModal">削除 <i class="far fa-trash-alt"></i></button>
+                    <button type="button" class="form-delete-button" data-toggle="modal" data-target="#deleteModal">削除 <i class="far fa-trash-alt"></i></button>
                 </div>
 
                 <div class="article-date">

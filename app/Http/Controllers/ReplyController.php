@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ReplyRequest;
 use App\Http\Service\ReplyService;
+use Illuminate\Http\Request;
 
 class ReplyController extends Controller
 {
@@ -31,5 +32,16 @@ class ReplyController extends Controller
         $this->replyService->addReply($request);
 
         return redirect()->route('show', ['id' => $request->article_id]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit(Request $request)
+    {
+        $editReply = $this->replyService->editReply($request);
+
+        return view('sasaQ.editReply', compact('editReply'));
     }
 }

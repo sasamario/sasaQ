@@ -36,6 +36,7 @@ class ReplyService
     public function updateReply(ReplyRequest $request): void
     {
         Reply::where('reply_id', $request->reply_id)
+            ->where('user_id', Auth::id())
             ->update(['body' => $request->body]);
     }
 }

@@ -79,13 +79,18 @@ class ArticleController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
     public function edit(Request $request)
     {
         $editArticle = $this->articleService->editArticle($request);
 
-        return view('sasaQ.edit', compact('editArticle'));
+        //editArticleがnullの時（他のユーザーが編集ボタンを押したとき）はホームにリダイレクトする
+        if ($editArticle == null) {
+            return redirect()->route('home');
+        } else {
+            return view('sasaQ.edit', compact('editArticle'));
+        }
     }
 
     /**

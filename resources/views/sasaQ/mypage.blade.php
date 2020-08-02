@@ -42,6 +42,33 @@
                 <p class="replies-title">今までのコメント</p>
                 @foreach ($myReplies as $reply)
                     <div class="reply-box col-11 mx-auto py-3">
+
+                        <!-- モーダルの設定 -->
+                        <div class="modal fade" id="deleteModal{{$reply->reply_id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalLabel">削除確認</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>コメント：「{{$reply->body}}」を削除しますか？</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <!-- data-dismiss="modal"によって、プラグインを用いてモーダルを閉じている -->
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                                        <form action="{{route('deleteReply')}}" method="post" class="reply-form">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="reply_id" value="{{$reply->reply_id}}">
+                                            <button type="submit" class="btn btn-primary">削除 <i class="far fa-trash-alt"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="reply-top">
                             {{-- ドロップダウンメニュー --}}
                             <div class="float-right dropdown" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,7 +80,7 @@
                                     <input type="hidden" name="reply_id" value="{{$reply->reply_id}}">
                                     <button type="submit" class="form-edit-button">編集 <i class="far fa-edit"></i></button>
                                 </form>
-                                <button type="button" class="form-delete-button" data-toggle="modal" data-target="#deleteModal">削除 <i class="far fa-trash-alt"></i></button>
+                                <button type="button" class="form-delete-button" data-toggle="modal" data-target="#deleteModal{{$reply->reply_id}}">削除 <i class="far fa-trash-alt"></i></button>
                             </div>
 
                             <div class="reply-time">{{$reply->created_at}}</div>

@@ -61,3 +61,6 @@ Route::post('/mypage/reply/edit', 'ReplyController@edit')->name('editReply');
 
 //返信コメントの更新時のルート
 Route::post('/mypage/reply/update', 'ReplyController@update')->name('updateReply');
+
+//返信コメントの削除時のルート
+Route::post('/mypage/reply/delete', 'ReplyController@delete')->name('deleteReply');

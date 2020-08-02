@@ -36,13 +36,18 @@ class ReplyController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
     public function edit(Request $request)
     {
         $editReply = $this->replyService->editReply($request);
 
-        return view('sasaQ.editReply', compact('editReply'));
+        //editReplyがnullの時（他のユーザーが編集ボタンを押したとき）はホームにリダイレクトする
+        if ($editReply == null) {
+            return redirect()->route('home');
+        } else {
+            return view('sasaQ.editReply', compact('editReply'));
+        }
     }
 
     /**

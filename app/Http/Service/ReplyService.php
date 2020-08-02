@@ -21,13 +21,9 @@ class ReplyService
         ]);
     }
 
-    /**
-     * @param Request $request
-     * @return Reply
-     */
-    public function editReply(Request $request): Reply
+    public function editReply(Request $request)
     {
-        return Reply::find($request->reply_id);
+        return Reply::where('user_id', Auth::id())->find($request->reply_id);
     }
 
     /**

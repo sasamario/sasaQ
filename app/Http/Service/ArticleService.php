@@ -79,13 +79,9 @@ class ArticleService
         return Article::where('user_id', Auth::id())->find($id);
     }
 
-    /**
-     * @param Request $request
-     * @return Article
-     */
-    public function editArticle(Request $request): Article
+    public function editArticle(Request $request)
     {
-        return Article::find($request->article_id);
+        return Article::where('user_id', Auth::id())->find($request->article_id);
     }
 
     /**
@@ -99,6 +95,7 @@ class ArticleService
         $tag3 = (isset($tags[2])) ? $tags[2] : null;
 
         Article::where('article_id', $request->article_id)
+            ->where('user_id', Auth::id())
             ->update([
                 'title' => $request->title,
                 'tag1' => $tag1,

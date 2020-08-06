@@ -101,7 +101,7 @@ class ArticleController extends Controller
     {
         $this->articleService->updateArticle($request);
 
-        return redirect()->route('home');
+        return redirect()->route('mypage');
     }
 
     /**
@@ -112,7 +112,7 @@ class ArticleController extends Controller
     {
         $this->articleService->deleteArticle($request);
 
-        return redirect()->route('home');
+        return redirect()->route('mypage');
     }
 
     /**

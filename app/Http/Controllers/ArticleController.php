@@ -126,4 +126,16 @@ class ArticleController extends Controller
 
         return view('sasaQ.search', compact('articles', 'count'));
     }
+
+    /**
+     * @param string $tag
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function searchTag(string $tag)
+    {
+        $articles = $this->articleService->searchTagArticles($tag);
+        $count = $this->articleService->countTagArticles($tag);
+
+        return view('sasaQ.search', compact('articles', 'count'));
+    }
 }

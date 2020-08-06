@@ -9,7 +9,7 @@
                 <textarea class="reply-body" name="body" cols="30" rows="3" placeholder="テキストを入力">{{$editReply->body}}</textarea>
                 <div class="text-right">
                     <input type="hidden" name="reply_id" value="{{$editReply->reply_id}}">
-                    <input class="reply-button" type="submit" value="返信">
+                    <input class="reply-button" type="submit" value="更新">
                 </div>
             </form>
         </div>

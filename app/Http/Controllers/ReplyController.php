@@ -58,7 +58,7 @@ class ReplyController extends Controller
     {
         $this->replyService->updateReply($request);
 
-        return redirect()->route('home');
+        return redirect()->route('mypage');
     }
 
     /**
@@ -69,6 +69,6 @@ class ReplyController extends Controller
     {
         $this->replyService->deleteRepley($request);
 
-        return redirect()->route('home');
+        return redirect()->route('mypage');
     }
 }

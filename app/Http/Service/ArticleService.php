@@ -130,4 +130,28 @@ class ArticleService
     {
         return Article::where('body', 'LIKE', "%{$request->search}%")->count();
     }
+
+    /**
+     * @param string $tag
+     * @return Collection
+     */
+    public function searchTagArticles(string $tag): Collection
+    {
+        return Article::where('tag1', '=', $tag)
+            ->orWhere('tag2', '=', $tag)
+            ->orWhere('tag3', '=', $tag)
+            ->get();
+    }
+
+    /**
+     * @param string $tag
+     * @return int
+     */
+    public function countTagArticles(string $tag): int
+    {
+        return Article::where('tag1', '=', $tag)
+            ->orWhere('tag2', '=', $tag)
+            ->orWhere('tag3', '=', $tag)
+            ->count();
+    }
 }

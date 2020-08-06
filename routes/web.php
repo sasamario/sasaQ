@@ -56,6 +56,9 @@ Route::post('/mypage/delete', 'ArticleController@delete')->name('delete');
 //検索時のルート
 Route::get('/search', 'ArticleController@search')->name('search');
 
+//タグ検索時のルート
+Route::get('/searchTag/{tag}', 'ArticleController@searchTag')->name('searchTag');
+
 //返信コメントの編集ページへのルート
 Route::post('/mypage/reply/edit', 'ReplyController@edit')->name('editReply');
 

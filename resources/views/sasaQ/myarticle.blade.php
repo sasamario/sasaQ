@@ -53,17 +53,17 @@
                 </div>
                 <div class="tags">
                     <div class="tag">
-                        {{$article->tag1}}
+                        <a href="{{route('searchTag', ['tag' => $article->tag1])}}">{{$article->tag1}}</a>
                     </div>
                     @if ($article->tag2)
                         <div class="tag">
-                            {{$article->tag2}}
+                            <a href="{{route('searchTag', ['tag' => $article->tag1])}}">{{$article->tag2}}</a>
                         </div>
                     @endif
 
                     @if ($article->tag3)
                         <div class="tag">
-                            {{$article->tag3}}
+                            <a href="{{route('searchTag', ['tag' => $article->tag1])}}">{{$article->tag3}}</a>
                         </div>
                     @endif
                 </div>

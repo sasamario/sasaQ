@@ -23,7 +23,7 @@
                                 <!-- data-dismiss="modal"によって、プラグインを用いてモーダルを閉じている -->
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
                                 <form action="{{route('delete')}}" method="post" class="myarticle-form">
-                                    {{ csrf_field() }}
+                                    @csrf
                                     <input type="hidden" name="article_id" value="{{$article->article_id}}">
                                     <button type="submit" class="btn btn-primary">削除 <i class="far fa-trash-alt"></i></button>
                                 </form>
@@ -38,7 +38,7 @@
                 </div>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <form action="{{route('edit')}}" method="post" class="dropdown-form">
-                        {{ csrf_field() }}
+                        @csrf
                         <input type="hidden" name="article_id" value="{{$article->article_id}}">
                         <button type="submit" class="form-edit-button">編集 <i class="far fa-edit"></i></button>
                     </form>

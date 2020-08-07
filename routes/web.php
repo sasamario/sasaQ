@@ -62,6 +62,11 @@ Route::get('/searchTag/{tag}', 'ArticleController@searchTag')->name('searchTag')
 //返信コメントの編集ページへのルート
 Route::post('/mypage/reply/edit', 'ReplyController@edit')->name('editReply');
 
+//編集ページで入力に誤りがあった場合のリダイレクト時のルート
+Route::get('/mypage/reply/edit', function() {
+   return redirect()->route('mypage')->with('editErrorMessage', '本文は必ず入力してください（編集は完了していません）');
+});
+
 //返信コメントの更新時のルート
 Route::post('/mypage/reply/update', 'ReplyController@update')->name('updateReply');
 

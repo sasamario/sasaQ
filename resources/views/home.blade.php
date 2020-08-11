@@ -12,5 +12,8 @@
             </div>
         </div>
     @endforeach
+    <div class="articles-paginate row justify-content-center mt-4">
+        {{ $articles->links() }}
+    </div>
 </div>
 @endsection

@@ -6,6 +6,7 @@ use App\Http\Requests\ArticleRequest;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\Article;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 
 class ArticleService
@@ -33,12 +34,11 @@ class ArticleService
     }
 
     /**
-     * @return Collection
-     * トップページの記事データ取得の処理
+     * @return LengthAwarePaginator
      */
-    public function readArticles(): Collection
+    public function readArticles(): LengthAwarePaginator
     {
-        return Article::orderBy('created_at', 'desc')->get();
+        return Article::orderBy('created_at', 'desc')->paginate(15);
     }
 
     /**

@@ -37,7 +37,7 @@ Route::post('/article/reply', 'ReplyController@add')->name('addReply');
 Route::get('/mypage', 'UserController@showMyPage')->name('mypage');
 
 //マイページの記事へのルート
-Route::get('/mypage/article/{id}', 'ArticleController@showMyPageArticle')->name('myarticle');
+Route::get('/mypage/myarticle/{id}', 'ArticleController@showMyPageArticle')->name('myarticle');
 
 //編集ページへのルート
 Route::post('/mypage/article/edit', 'ArticleController@edit')->name('edit');
@@ -48,10 +48,10 @@ Route::get('/mypage/article/edit', function() {
 });
 
 //更新時のルート
-Route::post('/mypage/update', 'ArticleController@update')->name('update');
+Route::post('/mypage/article/update', 'ArticleController@update')->name('update');
 
 //削除時のルート
-Route::post('/mypage/delete', 'ArticleController@delete')->name('delete');
+Route::post('/mypage/article/delete', 'ArticleController@delete')->name('delete');
 
 //検索時のルート
 Route::get('/search', 'ArticleController@search')->name('search');

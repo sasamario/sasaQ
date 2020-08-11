@@ -24,7 +24,7 @@ class ArticleRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:255', //unique データベース内に同じ値がないかチェック
+            'title' => 'required|max:255', 
             'tags' => 'required',
             'body' => 'required',
         ];

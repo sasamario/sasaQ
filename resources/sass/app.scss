@@ -105,6 +105,10 @@
       font-size: 2rem;
     }
   }
+  .article-body {
+    //文字の折り返しの設定
+    word-wrap: break-word;
+  }
 }
 
 //返信コメント欄
@@ -119,6 +123,7 @@
 .reply-comment {
   //入力された連続する空白や、改行を反映させる
   white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 //返信フォーム

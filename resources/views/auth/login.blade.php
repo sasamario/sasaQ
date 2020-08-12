@@ -36,6 +36,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <p class="mb-0 mt-3">テストログイン用メールアドレス<br/>e-mail:test@test.jp / passward:testtest</p>
                             </div>
                         </div>
 

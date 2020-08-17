@@ -23,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //MySQL5.7.7以前の場合、テーブルのIndexに指定できるデータ長が最大767byte
+        //utf8mb4では1文字当たり4byteのため、191*4=764byteと収まるため191に指定
+        \Illuminate\Support\Facades\Schema::defaultStringLength(191);
     }
 }

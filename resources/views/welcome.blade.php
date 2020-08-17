@@ -4,67 +4,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
-    <body>
-        <div class="flex-center position-ref full-height">
+    <body class="welcome-body">
+        <div class="welcome-header">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -78,22 +27,21 @@
                     @endauth
                 </div>
             @endif
+        </div>
+        <div class="welcome-content">
+            <div class="welcome-title">
+                Welcome to <strong>sasaQ</strong>
+            </div>
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Welcome to <strong>sasaQ</strong>
-                </div>
-
-                <div class="detail">
-                    <p><strong>『sasaQ』</strong>は、社内向けの質問サービスです。<br/>
-                        新卒エンジニアとして働いてみて、チャットベースの質問では相手に自分の思いを伝えることが難しいと感じました。<br/>
-                        実際に、先輩に「何がわからないか伝わらない。マークダウン記法を使って質問するといい」とアドバイスをいただきました。<br/>
-                        質問をマークダウン記法を使って取りまとめることで、自分の伝えたいことが整理でき回答者側も的確なアドバイスができると思います。<br/>
-                        そういった実体験から、マークダウンの使える質問サービスを開発することにしました。<br/>
-                        また、社内向けのサービスのため質問や回答がデータとして蓄積していき、同じ質問で時間を取られることがなくなる点、<br/>
-                        マークダウン記法を使用することによる質問力の向上などの効果が期待できます。<br/>
-                        <strong>※テストログイン用のアカウントあります。ログインフォームにアクセスお願いいたします。</strong></p>
-                </div>
+            <div class="detail">
+                <p><strong>『sasaQ』</strong>は、社内向けの質問サービスです。<br/>
+                    新卒エンジニアとして働いてみて、チャットベースの質問では相手に自分の思いを伝えることが難しいと感じました。<br/>
+                    実際に、先輩に「何がわからないか伝わらない。マークダウン記法を使って質問するといい」とアドバイスをいただきました。<br/>
+                    質問をマークダウン記法を使って取りまとめることで、自分の伝えたいことが整理でき回答者側も的確なアドバイスができると思います。<br/>
+                    そういった実体験から、マークダウンの使える質問サービスを開発することにしました。<br/>
+                    また、社内向けのサービスのため質問や回答がデータとして蓄積していき、同じ質問で時間を取られることがなくなる点、<br/>
+                    マークダウン記法を使用することによる質問力の向上などの効果が期待できます。<br/>
+                    <strong>※テストログイン用のアカウントあります。ログインフォームにアクセスお願いいたします。</strong></p>
             </div>
         </div>
     </body>

@@ -9,7 +9,11 @@
             <div class="user-box mx-auto clearfix">
                 <div class="user-left-box float-left col-5">
                     <div class="user-icon">
-                        <i class="fas fa-user fa-3x"></i>
+                        @if (Auth::user()->avatar)
+                            <img class="twitter-avatar" src="{{ Auth::user()->avatar }}">
+                        @else
+                            <i class="fas fa-user fa-3x"></i>
+                        @endif
                     </div>
                     <p class="user-name">{{ Auth::user()->name }}さん</p>
                 </div>

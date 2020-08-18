@@ -66,6 +66,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
+                                <button type="submit" class="btn twitter-btn">
+                                    <a href="/auth/twitter"><i class="fab fa-twitter"></i> Twitter Register</a>
+                                </button>
                             </div>
                         </div>
                     </form>

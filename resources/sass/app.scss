@@ -35,6 +35,14 @@
     }
 }
 
+.twitter-btn {
+  background-color: #00aced;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
 //投稿フォーム
 .help-button {
   cursor: pointer;
@@ -201,6 +209,11 @@
           height: 80%;
           display: flex;
           justify-content: center;
+          .twitter-avatar {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+          }
           .fa-user {
             border:3px solid black;
             border-radius: 50%;

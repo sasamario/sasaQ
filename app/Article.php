@@ -26,4 +26,12 @@ class Article extends Model
   {
       return $this->belongsTo('App\User');
   }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+  public function bookmarks()
+  {
+      return $this->hasMany('App\Bookmark', 'article_id', 'article_id');
+  }
 }

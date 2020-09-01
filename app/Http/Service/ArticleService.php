@@ -164,4 +164,25 @@ class ArticleService
     {
         return Article::find($id)->bookmarks->where('user_id', Auth::id())->isNotEmpty();
     }
+
+    /**
+     * @return LengthAwarePaginator
+     */
+    public function showMyBookmarkArticles(): LengthAwarePaginator
+    {
+        return Article::join('bookmarks', 'articles.article_id', '=', 'bookmarks.article_id')
+            ->where('bookmarks.user_id', Auth::id())
+            ->orderBy('bookmarks.created_at', 'desc')
+            ->paginate(10);
+    }
+
+    /**
+     * @return int
+     */
+    public function countMyBookmarkArticles(): int
+    {
+        return Article::join('bookmarks', 'articles.article_id', '=', 'bookmarks.article_id')
+            ->where('bookmarks.user_id', Auth::id())
+            ->count();
+    }
 }

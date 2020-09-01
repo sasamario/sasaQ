@@ -154,4 +154,14 @@ class ArticleService
             ->orWhere('tag3', '=', $tag)
             ->count();
     }
+
+    /**
+     * @param int $id
+     * @return bool
+     * 記事に対して、ログインユーザーがブックマークしているかどうか判別するための処理
+     */
+    public function checkBookmark(int $id): bool
+    {
+        return Article::find($id)->bookmarks->where('user_id', Auth::id())->isNotEmpty();
+    }
 }

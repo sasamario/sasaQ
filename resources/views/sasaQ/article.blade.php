@@ -32,6 +32,11 @@
             </div>
 {{--            ※注意　{{$article->body}}の前に空白が存在すると、pre要素になってしまい文の始めが意図しない表示になる--}}
             <div class="article-body markdown">{{$article->body}}</div>
+
+            <div id="app">
+{{--                v-bind箇所でfalseになると、「The value for a v-bind expression cannot be empty」とエラーが出る。文字列にしたところ大丈夫なため、三項演算子で文字列を指定--}}
+                <bookmark-component :article-id="{{ $article->article_id }}" :is-bookmark="{{ $isBookmark ? 'true' : 'false' }}"></bookmark-component>
+            </div>
         </div>
     </div>
 @endsection

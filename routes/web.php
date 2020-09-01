@@ -77,3 +77,9 @@ Route::post('/mypage/reply/update', 'ReplyController@update')->name('updateReply
 
 //返信コメントの削除時のルート
 Route::post('/mypage/reply/delete', 'ReplyController@delete')->name('deleteReply');
+
+//ブックマーク追加時のルート
+Route::post('/addBookmark', 'BookmarkController@add')->name('addBookmark');
+
+//ブックマーク削除時のルート
+Route::post('/deleteBookmark', 'BookmarkController@delete')->name('deleteBookmark');

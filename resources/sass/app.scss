@@ -288,6 +288,11 @@
   margin: 0 0.5rem;
 }
 
+//ブックマーク一覧・検索結果のトップ文
+.bookmark-header, .search-result {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
 
 //エラーメッセージ
 .error-message {

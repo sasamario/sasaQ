@@ -63,7 +63,9 @@ class ArticleController extends Controller
         $isReplies = $this->articleService->showArticleReply($id)->isEmpty();
         $writerName = $this->articleService->getArticleWriterName($id);
 
-        return view('sasaQ.article', compact('article', 'replies', 'isReplies', 'writerName'));
+        $isBookmark = $this->articleService->checkBookmark($id);
+
+        return view('sasaQ.article', compact('article', 'replies', 'isReplies', 'writerName', 'isBookmark'));
     }
 
     /**

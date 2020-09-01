@@ -140,4 +140,15 @@ class ArticleController extends Controller
 
         return view('sasaQ.search', compact('articles', 'count'));
     }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showMyBookmark()
+    {
+        $articles = $this->articleService->showMyBookmarkArticles();
+        $count = $this->articleService->countMyBookmarkArticles();
+
+        return view('sasaQ.bookmark', compact('articles', 'count'));
+    }
 }

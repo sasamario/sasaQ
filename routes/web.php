@@ -83,3 +83,7 @@ Route::post('/addBookmark', 'BookmarkController@add')->name('addBookmark');
 
 //ブックマーク削除時のルート
 Route::post('/deleteBookmark', 'BookmarkController@delete')->name('deleteBookmark');
+
+//ブックマーク一覧ページへのルート
+Route::get('/bookmark', 'ArticleController@showMyBookmark')->name('myBookmark');
+

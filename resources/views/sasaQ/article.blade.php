@@ -34,7 +34,8 @@
             <div class="article-body markdown">{{$article->body}}</div>
 
             <div id="app">
-{{--                v-bind箇所でfalseになると、「The value for a v-bind expression cannot be empty」とエラーが出る。文字列にしたところ大丈夫なため、三項演算子で文字列を指定--}}
+{{--                is-bookmark="{{ $isBookmark }}"　だとtrueが1として認識され、falseだとエラーになる　原因が分らない--}}
+{{--                v-bind箇所で $isBookmark = false になると、「The value for a v-bind expression cannot be empty」とエラーが出る。''で囲ったら認識された--}}
                 <bookmark-component :article-id="{{ $article->article_id }}" :is-bookmark="{{ $isBookmark ? 'true' : 'false' }}"></bookmark-component>
             </div>
         </div>

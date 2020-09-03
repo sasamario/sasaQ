@@ -12,14 +12,24 @@ export default {
     name: "BookmarkComponent",
 
     //propsでPHPから送られてきたデータを受け取っている ここでの変数は、v-bindで指定した変数（ケバブケース）のものをスネークケースにする
-    props: ["articleId", "isBookmark"],
+    // props: ["articleId", "isBookmark"],
+    props: {
+        articleId: {
+            type: Number,
+            required: true,
+        },
+        isBookmark: {
+            type: Boolean,
+            required: true,
+        }
+    },
     data() {
         return {
             isActiveTrue: this.isActiveTrue = this.isBookmark
         };
     },
     computed: {
-      bookmark: function() {
+      bookmark() {
           return this.isActiveTrue ? 'ブックマーク済み' : 'ブックマーク'
       }
     },

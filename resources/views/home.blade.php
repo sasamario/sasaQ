@@ -8,7 +8,7 @@
                 <a class="title" href="{{route('show', ['id' => $item->article_id])}}">{{$item->title}}</a>
             </div>
             <div class="article-date">
-                {{$item->date}}
+                {{$item->date}} に投稿
             </div>
         </div>
     @endforeach

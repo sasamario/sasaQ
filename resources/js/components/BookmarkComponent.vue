@@ -11,8 +11,6 @@
 export default {
     name: "BookmarkComponent",
 
-    //propsでPHPから送られてきたデータを受け取っている ここでの変数は、v-bindで指定した変数（ケバブケース）のものをスネークケースにする
-    // props: ["articleId", "isBookmark"],
     props: {
         articleId: {
             type: Number,

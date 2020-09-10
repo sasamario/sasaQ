@@ -103,6 +103,7 @@ class ArticleService
                 'tag2' => $tag2,
                 'tag3' => $tag3,
                 'body' => $request->body,
+                'status' => $request->status,
             ]);
     }
 

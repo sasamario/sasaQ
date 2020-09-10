@@ -30,6 +30,7 @@ class ArticleService
             'tag3' => $tag3,
             'body' => $request->body,
             'date' =>now(),
+            'status' =>$request->status,
         ]);
     }
 
@@ -183,6 +184,27 @@ class ArticleService
     {
         return Article::join('bookmarks', 'articles.article_id', '=', 'bookmarks.article_id')
             ->where('bookmarks.user_id', Auth::id())
+            ->count();
+    }
+
+    /**
+     * @return LengthAwarePaginator
+     */
+    public function readDraftArticles(): LengthAwarePaginator
+    {
+        return Article::where('user_id', Auth::id())
+            ->where('status', Article::STATUS_DRAFT)
+            ->orderBy('created_at', 'desc')
+            ->paginate(15);
+    }
+
+    /**
+     * @return int
+     */
+    public function countDraftArticles(): int
+    {
+        return Article::where('user_id', Auth::id())
+            ->where('status', Article::STATUS_DRAFT)
             ->count();
     }
 }

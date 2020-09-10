@@ -8,7 +8,13 @@ class Article extends Model
 {
   protected $primaryKey = 'article_id';
 
-  protected $fillable = ['user_id', 'title', 'tag1', 'tag2', 'tag3', 'body', 'date'];
+  protected $fillable = ['user_id', 'title', 'tag1', 'tag2', 'tag3', 'body', 'date', 'status'];
+
+  //下書き
+  const STATUS_DRAFT = 0;
+
+  //投稿
+  const STATUS_POST = 1;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

@@ -87,3 +87,5 @@ Route::post('/deleteBookmark', 'BookmarkController@delete')->name('deleteBookmar
 //ブックマーク一覧ページへのルート
 Route::get('/bookmark', 'ArticleController@showMyBookmark')->name('myBookmark');
 
+//下書き一覧ページへのルート
+Route::get('/draft', 'ArticleController@readDraft')->name('draft');

@@ -89,3 +89,6 @@ Route::get('/bookmark', 'ArticleController@showMyBookmark')->name('myBookmark');
 
 //下書き一覧ページへのルート
 Route::get('/draft', 'ArticleController@readDraft')->name('draft');
+
+//下書き記事へのルート
+Route::get('/draft/article/{id}', 'ArticleController@showDraft')->name('showDraft');

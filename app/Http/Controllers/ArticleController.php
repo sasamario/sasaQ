@@ -152,11 +152,25 @@ class ArticleController extends Controller
         return view('sasaQ.bookmark', compact('articles', 'count'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function readDraft()
     {
         $articles = $this->articleService->readDraftArticles();
         $count = $this->articleService->countDraftArticles();
 
         return view('sasaQ.draft', compact('articles', 'count'));
+    }
+
+    /**
+     * @param int $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showDraft(int $id)
+    {
+        $article = $this->articleService->showMyArticle($id);
+
+        return view('sasaQ.draftArticle', compact('article'));
     }
 }

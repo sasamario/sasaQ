@@ -151,4 +151,12 @@ class ArticleController extends Controller
 
         return view('sasaQ.bookmark', compact('articles', 'count'));
     }
+
+    public function readDraft()
+    {
+        $articles = $this->articleService->readDraftArticles();
+        $count = $this->articleService->countDraftArticles();
+
+        return view('sasaQ.draft', compact('articles', 'count'));
+    }
 }

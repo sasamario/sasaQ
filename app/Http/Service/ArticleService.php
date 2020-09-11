@@ -39,7 +39,7 @@ class ArticleService
      */
     public function readArticles(): LengthAwarePaginator
     {
-        return Article::orderBy('created_at', 'desc')->paginate(15);
+        return Article::where('status', Article::STATUS_POST)->orWhere('status', null)->orderBy('created_at', 'desc')->paginate(15);
     }
 
     /**

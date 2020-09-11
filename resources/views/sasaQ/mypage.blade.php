@@ -29,6 +29,11 @@
                     <div class="article-box col-11 mx-auto py-3">
                         <div class="article-title">
                             <a class="title" href="{{route('myarticle', ['id' => $item->article_id])}}">{{$item->title}}</a>
+                            <div class="draft-status">
+                                @if ($item->status === \App\Article::STATUS_DRAFT)
+                                    【下書き】
+                                @endif
+                            </div>
                         </div>
                         <div class="article-date">
                             {{$item->date}}

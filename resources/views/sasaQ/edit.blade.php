@@ -28,6 +28,18 @@
             </div>
         </div>
         <div class="post-page-footer">
+{{--            記事のステータスが下書きだった場合、チェックボックスで投稿か下書き保存を選択できる--}}
+            @if ($editArticle->status === \App\Article::STATUS_DRAFT)
+                <label>
+                    <input type="radio" name="status" value="{{ \App\Article::STATUS_POST }}">投稿
+                </label>
+                <label>
+                    <input type="radio" name="status" value="{{ \App\Article::STATUS_DRAFT }}" checked>下書き
+                </label>
+            @else
+                <input type="hidden" name="status" value="{{$editArticle->status}}">
+            @endif
+
             <input type="hidden" name="article_id" value="{{$editArticle->article_id}}">
             <input type="submit" class="post-button m-1" value="更新">
         </div>

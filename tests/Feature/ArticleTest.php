@@ -33,4 +33,30 @@ class ArticleTest extends TestCase
             ->assertRedirect('/login'); //リダイレクト先を確認
         $this->assertGuest();
     }
+
+    /**
+     * ホーム画面へアクセス（ログイン状態）
+     */
+    public function testLogin()
+    {
+        $this->assertGuest();
+
+        $response = $this->dummyLogin();
+        $response->assertStatus(200);
+        //認証を確認
+        $this->assertAuthenticated();
+    }
+
+    /**
+     * ダミーログイン処理
+     * @return \Illuminate\Testing\TestResponse
+     */
+    public function dummyLogin()
+    {
+        $user = factory(User::class)->create();
+
+        return  $this->actingAs($user)
+            ->withSession(['user_id', $user->id])
+            ->get(route('home'));
+    }
 }

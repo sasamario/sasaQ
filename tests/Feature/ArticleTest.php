@@ -22,4 +22,15 @@ class ArticleTest extends TestCase
         //認証されていないことを確認
         $this->assertGuest();
     }
+
+    /**
+     * ホーム画面へアクセス（未ログイン状態）し、ログイン画面へリダイレクト
+     */
+    public function testNonLoginAccess()
+    {
+        $response = $this->get('/home');
+        $response->assertStatus(302)
+            ->assertRedirect('/login'); //リダイレクト先を確認
+        $this->assertGuest();
+    }
 }

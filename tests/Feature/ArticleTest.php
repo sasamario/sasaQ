@@ -69,4 +69,14 @@ class ArticleTest extends TestCase
         $response = $this->get('/create');
         $response->assertStatus(200);
     }
+
+    /**
+     * マイページへアクセス
+     */
+    public function testMyPage()
+    {
+        $this->dummyLogin();
+        $response = $this->get(route('mypage'));
+        $response->assertSee(200);
+    }
 }

@@ -12,7 +12,7 @@ $factory->define(Article::class, function (Faker $faker) {
         'tag1' => $faker->word(),
         'tag2' => $faker->word(),
         'tag3' => $faker->word(),
-        'body' => $faker->paragraphs(),
+        'body' => $faker->text(),
         'date' => $faker->date(),
         'status' => $faker->numberBetween(0,1)
     ];

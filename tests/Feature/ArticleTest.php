@@ -79,4 +79,14 @@ class ArticleTest extends TestCase
         $response = $this->get(route('mypage'));
         $response->assertSee(200);
     }
+
+    /**
+     * ブックマーク一覧ページへアクセス
+     */
+    public function testBookmarkPage()
+    {
+        $this->dummyLogin();
+        $response = $this->get(route('myBookmark'));
+        $response->assertStatus(200);
+    }
 }

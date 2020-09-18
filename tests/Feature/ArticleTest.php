@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Article;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -58,5 +57,16 @@ class ArticleTest extends TestCase
         return  $this->actingAs($user)
             ->withSession(['user_id', $user->id])
             ->get(route('home'));
+    }
+
+    /**
+     * 投稿ページへアクセス
+     */
+    public function testCreatePage()
+    {
+        $this->dummyLogin();
+
+        $response = $this->get('/create');
+        $response->assertStatus(200);
     }
 }

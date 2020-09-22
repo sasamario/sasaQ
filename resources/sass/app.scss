@@ -11,6 +11,14 @@ body {
     background-color: #cc9c7a;
 }
 
+.navbar {
+    background-color: #b3977d;
+}
+
+.dropdown-menu {
+    background-color: #faebd7;
+}
+
 //welcomeページ
 .welcome-body {
     background-color: #fff;
@@ -64,21 +72,21 @@ body {
     margin-top: 3rem;
     margin-bottom: 1.5rem;
     padding-bottom: 0.2rem;
-    border-bottom: solid 1px #ddd;
+    border-bottom: solid 1px #e6bfab;
   }
   h2 {
     font-size: 1.8rem;
     margin-top: 3rem;
     margin-bottom: 1.5rem;
     padding-bottom: 0.2rem;
-    border-bottom: solid 1px #ddd;
+    border-bottom: solid 1px #e6bfab;
   }
   h3 {
     font-size: 1.6rem;
     margin-top: 3rem;
     margin-bottom: 1.5rem;
     padding-bottom: 0.2rem;
-    border-bottom: solid 1px #ddd;
+    border-bottom: solid 1px #e6bfab;
   }
   code {
     color: white;
@@ -108,15 +116,15 @@ body {
   width: 60%;
   margin: 0 auto;
   padding: 1rem 0;
-  background-color: #ffffff;
-  border-radius: 1rem;
-  box-shadow: 0 0 3px #1b1e21;
+  background-color: #faebd7;
+  border-radius: 0.8rem;
+  box-shadow: 0 0 4px #999999;
   //文字の折り返しの設定
   word-wrap: break-word;
 }
 
 .article-box, .reply-box {
-  border-bottom: solid 3px #F6F6F6;
+  border-bottom: solid 3px #e6bfab;
 }
 
 .title {
@@ -139,7 +147,7 @@ body {
 //記事ページ
 .article {
   .tag {
-    background-color: #DDDDDD;
+    background-color: #e6bfab;
     display: inline-block;
     padding: 0.3rem;
     border-radius: 0.3rem;
@@ -175,8 +183,8 @@ body {
 .reply-wrapper {
   width: 60%;
   margin: 0 auto;
-  background-color: #ffffff;
-  border: 1px solid #EEEEEE;
+  background-color: #faebd7;
+  box-shadow: 0 0 4px #999999;
   .form-title {
     padding: 0.25rem;
     margin: 0;
@@ -208,7 +216,9 @@ body {
     padding: 0;
     //ユーザー情報
     .user-box {
-      background-color: #ffffff;
+      background-color: #faebd7;
+      border-radius: 0.8rem;
+      box-shadow: 0 0 4px #999999;
       padding: 1rem;
       margin-bottom: 1rem;
       //ユーザー写真・名前のbox
@@ -237,7 +247,7 @@ body {
       }
       //ユーザーの記事数・返信数のbox
       .user-right-box {
-        padding: 1rem 0;
+        padding: 1.5rem 0;
         .article-count, .reply-count {
           font-size: 1.5rem;
           text-align: center;
@@ -250,7 +260,9 @@ body {
     .mypage-article-wrapper {
       width: 100%;
       margin-bottom: 1rem;
-      background-color: #ffffff;
+      background-color: #faebd7;
+      border-radius: 0.8rem;
+      box-shadow: 0 0 4px #999999;
       padding: 1rem;
       .articles-title {
         text-align: center;
@@ -273,7 +285,9 @@ body {
 
     //返信box
     .replies-box {
-      background-color: #ffffff;
+      background-color: #faebd7;
+      border-radius: 0.8rem;
+      box-shadow: 0 0 4px #999999;
       padding: 1rem;
       .replies-title {
         text-align: center;
@@ -285,6 +299,21 @@ body {
       }
     }
   }
+}
+
+//投稿・編集フォーム
+.form-control {
+    background-color: #faebd7;
+    width: 99%;
+}
+.card {
+    border: 2px solid #cc9c7a;
+    .card-header {
+        background-color: #b3977d;
+    }
+    .card-body {
+        background-color: #faebd7;
+    }
 }
 
 //マイページの記事ページ

@@ -3,6 +3,7 @@
 namespace App\Http\Service;
 
 use App\Http\Requests\ArticleRequest;
+use App\Notifications\Slack;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\Article;
@@ -207,5 +208,21 @@ class ArticleService
         return Article::where('user_id', Auth::id())
             ->where('status', Article::STATUS_DRAFT)
             ->count();
+    }
+
+    /**
+     * @param ArticleRequest $request
+     */
+    public function sendSlackNotification(ArticleRequest $request): void
+    {
+        $user = Auth::user();
+
+        $id = Article::where('user_id', Auth::id())
+            ->where('title', $request->title)
+            ->where('body', $request->body)
+            ->orderBy('created_at', 'desc')
+            ->value('article_id');
+
+        $user->notify(new Slack($user->name, $request->title, $id));
     }
 }

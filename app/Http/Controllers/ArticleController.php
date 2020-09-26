@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use App\Http\Requests\ArticleRequest;
 use App\Http\Service\ArticleService;
 use Illuminate\Http\Request;
@@ -38,6 +39,10 @@ class ArticleController extends Controller
     public function add(ArticleRequest $request)
     {
         $this->articleService->addArticle($request);
+
+        if ($request->status == Article::STATUS_POST) {
+            $this->articleService->sendSlackNotification($request);
+        }
 
         return redirect()->route('home');
     }

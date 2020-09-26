@@ -108,6 +108,10 @@ class ArticleController extends Controller
     {
         $this->articleService->updateArticle($request);
 
+        if ($request->status == Article::STATUS_POST) {
+            $this->articleService->sendSlackNotification($request);
+        }
+
         return redirect()->route('mypage');
     }
 

@@ -11,6 +11,16 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
+     * Slackチャンネルに対する通知をルートする
+     *
+     * @return \Illuminate\Config\Repository|\Illuminate\Contracts\Foundation\Application|mixed
+     */
+    public function routeNotificationForSlack()
+    {
+        return config('app.webhook_url');
+    }
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array

@@ -2,6 +2,12 @@
 
 return [
 
+    'webhook_url' => env('SLACK_WEBHOOK_URL'),
+
+    'slack_channel' => env('SLACK_CHANNEL'),
+
+    'slack_name' => env('SLACK_NAME'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

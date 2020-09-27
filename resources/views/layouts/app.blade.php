@@ -23,7 +23,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'sasaQ') }}
@@ -53,7 +53,7 @@
                         @else
                             <form action="{{route('search')}}" method="get" class="my-auto">
                                 @csrf
-                                <input type="search" name="search" placeholder="キーワードを入力" >
+                                <input type="search" class="search" name="search" placeholder="キーワードを入力" >
                             </form>
                             <li class="nab-item">
                                 <a class="nav-link" href="{{route('home')}}">トップ</a>

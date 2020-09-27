@@ -15,16 +15,22 @@ body {
     background-color: #b3977d;
 }
 
+.search {
+    background-color: #faebd7;
+    border-radius: 0.4rem;
+    border: #cc9c7a;
+    padding: 0.4rem;
+}
+
 .dropdown-menu {
     background-color: #faebd7;
 }
 
 //welcomeページ
 .welcome-body {
-    background-color: #fff;
-    color: #636b6f;
+    background-color: #cc9c7a;
     font-family: 'Nunito', sans-serif;
-    font-weight: 200;
+    font-weight: 400;
     .welcome-header {
         text-align: right;
         padding: 1rem ;
@@ -103,7 +109,7 @@ body {
   }
   blockquote {
     padding: 0rem 1rem;
-    border-left: 0.25em solid #dfe2e5;
+    border-left: 0.25em solid #e6bfab;
   }
 }
 .post-page-footer {

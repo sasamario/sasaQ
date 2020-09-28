@@ -56,7 +56,7 @@
                                 <input type="search" class="search" name="search" placeholder="キーワードを入力" >
                             </form>
                             <li class="nab-item">
-                                <a class="nav-link" href="{{route('home')}}">トップ</a>
+                                <a class="nav-link" href="{{route('home')}}">ホーム</a>
                             </li>
                             <li class="nab-item">
                                 <a class="nav-link" href="{{route('create')}}">投稿</a>

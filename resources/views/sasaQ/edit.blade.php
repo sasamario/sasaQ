@@ -5,8 +5,8 @@
 @section('content')
     <form action="{{route('update')}}" method="post">
         @csrf
-        <input type="text" class="form-control m-1" id="title-input" placeholder="タイトル" name="title" value="{{$editArticle->title}}">
-        <input type="text" class="form-control m-1" placeholder="プログラミング技術に関するタグをスペース区切りで3つまで入力" name="tags" value="{{$editArticle->tag1}} {{$editArticle->tag2}} {{$editArticle->tag3}}">
+        <input type="text" class="form-control m-1" id="title-input" placeholder="タイトル（必須）" name="title" value="{{$editArticle->title}}">
+        <input type="text" class="form-control m-1" placeholder="タグを半角スペース区切りで3つまで入力（最低１つ必須）" name="tags" value="{{$editArticle->tag1}} {{$editArticle->tag2}} {{$editArticle->tag3}}">
         <div class="row justify-content-center mx-1">
             <div class="col-6 p-0">
                 <div class="card">

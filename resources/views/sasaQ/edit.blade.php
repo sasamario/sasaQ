@@ -5,6 +5,18 @@
 @section('content')
     <form action="{{route('update')}}" method="post">
         @csrf
+        <div class="importance-form form-group">
+            <label>
+                <input type="radio" name="importance" value="{{ \App\Article::STATUS_NOT_HURRY }}" checked>お手すきに
+            </label>
+            <label>
+                <input type="radio" name="importance" value="{{ \App\Article::STATUS_HURRY }}">急ぎ
+            </label>
+            <label>
+                <input type="radio" name="importance" value="{{ \App\Article::STATUS_OTHER }}">その他
+            </label>
+        </div>
+
         <input type="text" class="form-control m-1" id="title-input" placeholder="タイトル（必須）" name="title" value="{{$editArticle->title}}">
         <input type="text" class="form-control m-1" placeholder="タグを半角スペース区切りで3つまで入力（最低１つ必須）" name="tags" value="{{$editArticle->tag1}} {{$editArticle->tag2}} {{$editArticle->tag3}}">
         <div class="row justify-content-center mx-1">

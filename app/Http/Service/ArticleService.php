@@ -31,7 +31,8 @@ class ArticleService
             'tag3' => $tag3,
             'body' => $request->body,
             'date' =>now(),
-            'status' =>$request->status,
+            'status' => $request->status,
+            'importance' => $request->importance
         ]);
     }
 
@@ -105,6 +106,7 @@ class ArticleService
                 'tag3' => $tag3,
                 'body' => $request->body,
                 'status' => $request->status,
+                'importance' => $request->importance
             ]);
     }
 
@@ -223,6 +225,8 @@ class ArticleService
             ->orderBy('created_at', 'desc')
             ->value('article_id');
 
-        $user->notify(new Slack($user->name, $request->title, $id));
+        $status = Article::where('article_id', $id)->value('importance');
+
+        $user->notify(new Slack($user->name, $request->title, $id, $status));
     }
 }

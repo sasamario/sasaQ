@@ -61,11 +61,6 @@ body {
   }
 }
 
-//投稿フォーム
-.help-button {
-  cursor: pointer;
-}
-
 #markdown_preview {
   height: 355px;
   overflow-y: scroll;
@@ -111,10 +106,6 @@ body {
     padding: 0rem 1rem;
     border-left: 0.25em solid #e6bfab;
   }
-}
-.post-page-footer {
-    margin: 0.5rem;
-    text-align: right;
 }
 
 //トップページ
@@ -320,6 +311,19 @@ body {
     .card-body {
         background-color: #faebd7;
     }
+}
+
+.help-button {
+    cursor: pointer;
+}
+
+.importance-form {
+    margin: 0 0.5rem;
+}
+
+.post-page-footer {
+    margin: 0.5rem;
+    text-align: right;
 }
 
 //マイページの記事ページ

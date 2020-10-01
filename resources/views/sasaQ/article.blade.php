@@ -58,7 +58,7 @@
 @endsection
 
 @section('reply-form')
-    <div class="reply-wrapper">
+    <div class="reply-wrapper my-4">
         <p class="form-title">返信フォーム</p>
         <div class="reply-form">
             <form action="{{route('addReply')}}" method="post">

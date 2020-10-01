@@ -103,7 +103,7 @@
             @yield('replies')
         </div>
 
-       <div class="reply-content py-4">
+       <div class="reply-content">
             @yield('reply-form')
         </div>
 

@@ -60,6 +60,9 @@
                                 <button type="submit" class="btn twitter-btn">
                                     <a href="/auth/twitter"><i class="fab fa-twitter"></i> Twitter Login</a>
                                 </button>
+                                <button type="submit" class="btn google-btn">
+                                    <a href="/login/google"><i class="fab fa-google"></i> Google Login</a>
+                                </button>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">

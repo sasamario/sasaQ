@@ -22,6 +22,11 @@ Route::get('/auth/twitter', 'Auth\TwitterController@redirectToProvider');
 Route::get('/auth/twitter/callback', 'Auth\TwitterController@handleProviderCallback');
 Route::get("/auth/twitter/logout","Auth\TwitterController@logout");
 
+//Googleログインでのルート
+Route::get('/login/google', 'Auth\GoogleController@redirectToGoogle');
+Route::get('/login/google/callback', 'Auth\GoogleController@handleGoogleCallback');
+Route::get('/google/logout', 'Auth\GoogleController@logout');
+
 Auth::routes();
 
 Route::get('/home', 'ArticleController@read')->name('home');

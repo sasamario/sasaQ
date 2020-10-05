@@ -62,12 +62,15 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-4 register">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
                                 <button type="submit" class="btn twitter-btn">
                                     <a href="/auth/twitter"><i class="fab fa-twitter"></i> Twitter Register</a>
+                                </button>
+                                <button type="submit" class="btn google-btn">
+                                    <a href="/login/google"><i class="fab fa-google"></i> Google Login</a>
                                 </button>
                             </div>
                         </div>

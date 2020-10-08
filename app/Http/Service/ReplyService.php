@@ -3,6 +3,7 @@
 namespace App\Http\Service;
 
 use App\Http\Requests\ReplyRequest;
+use App\Notifications\CommentSlack;
 use App\Reply;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,5 +43,15 @@ class ReplyService
     public function deleteRepley(Request $request): void
     {
         Reply::where('reply_id', $request->reply_id)->where('user_id', Auth::id())->delete();
+    }
+
+    /**
+     * @param ReplyRequest $request
+     */
+    public function sendCommentSlackNotification(ReplyRequest $request)
+    {
+        $user = Auth::user();
+
+        $user->notify(new CommentSlack($user->name, $request->article_id));
     }
 }

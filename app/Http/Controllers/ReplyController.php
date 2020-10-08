@@ -30,6 +30,7 @@ class ReplyController extends Controller
     public function add(ReplyRequest $request)
     {
         $this->replyService->addReply($request);
+        $this->replyService->sendCommentSlackNotification($request);
 
         return redirect()->route('show', ['id' => $request->article_id]);
     }

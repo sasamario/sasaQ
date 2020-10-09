@@ -12,9 +12,9 @@ class ArticleTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * ログイン画面へアクセス
+     * @test
      */
-    public function testLoginView()
+    public function ログイン画面へアクセス()
     {
         $response = $this->get('/login');
         $response->assertStatus(200);
@@ -23,9 +23,9 @@ class ArticleTest extends TestCase
     }
 
     /**
-     * ホーム画面へアクセス（未ログイン状態）し、ログイン画面へリダイレクト
+     * @test
      */
-    public function testNonLoginAccess()
+    public function 未ログイン状態でホーム画面へアクセス()
     {
         $response = $this->get('/home');
         $response->assertStatus(302)
@@ -34,9 +34,9 @@ class ArticleTest extends TestCase
     }
 
     /**
-     * ホーム画面へアクセス（ログイン状態）
+     * @test
      */
-    public function testLogin()
+    public function ログイン状態でホーム画面へアクセス()
     {
         $this->assertGuest();
 
@@ -60,30 +60,30 @@ class ArticleTest extends TestCase
     }
 
     /**
-     * 投稿ページへアクセス
+     * @test
      */
-    public function testCreatePage()
+    public function 投稿ページへアクセス()
     {
         $this->dummyLogin();
 
-        $response = $this->get('/create');
+        $response = $this->get(route('create'));
         $response->assertStatus(200);
     }
 
     /**
-     * マイページへアクセス
+     * @test
      */
-    public function testMyPage()
+    public function マイページへアクセス()
     {
         $this->dummyLogin();
         $response = $this->get(route('mypage'));
-        $response->assertSee(200);
+        $response->assertStatus(200);
     }
 
     /**
-     * ブックマーク一覧ページへアクセス
+     * @test
      */
-    public function testBookmarkPage()
+    public function ブックマーク一覧へアクセス()
     {
         $this->dummyLogin();
         $response = $this->get(route('myBookmark'));

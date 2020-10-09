@@ -89,4 +89,31 @@ class ArticleTest extends TestCase
         $response = $this->get(route('myBookmark'));
         $response->assertStatus(200);
     }
+
+    /**
+     * @test
+     */
+    public function ステータス「投稿」時の追加処理テスト()
+    {
+        $this->dummyLogin();
+
+        $response = $this->post(route('add'), [
+            "importance" => "0",
+            "title" => "テストタイトル",
+            "tags" => "テスト タグ",
+            "body" => "テスト本文",
+            "status" => "1",
+        ]);
+
+        //投稿処理後ホーム画面にリダイレクトするか確認
+        $response->assertRedirect(route('home'));
+
+        //ホーム画面に追加した記事タイトルが表示されているか確認
+        $this->get(route('home'))
+            ->assertSee('テストタイトル');
+
+        //マイページで追加した記事タイトルが表示されているか確認
+        $this->get(route('mypage'))
+            ->assertSee('テストタイトル');
+    }
 }

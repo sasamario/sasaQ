@@ -116,4 +116,30 @@ class ArticleTest extends TestCase
         $this->get(route('mypage'))
             ->assertSee('テストタイトル');
     }
+
+    /**
+     * @test
+     */
+    public function ステータス「下書き」時の追加処理テスト()
+    {
+        $this->dummyLogin();
+
+        $response = $this->post(route('add'), [
+            "importance" => "0",
+            "title" => "テスト下書きタイトル",
+            "tags" => "テスト タグ",
+            "body" => "テスト本文",
+            "status" => "0",
+        ]);
+
+        $response->assertRedirect(route('home'));
+
+        //下書き一覧ページで下書き記事タイトルが表示されていることを確認
+        $this->get(route('draft'))
+            ->assertSee('テスト下書きタイトル');
+
+        //マイページで追加した記事タイトルが表示されているか確認
+        $this->get(route('mypage'))
+            ->assertSee('テスト下書きタイトル');
+    }
 }

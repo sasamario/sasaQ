@@ -8,12 +8,13 @@ use Faker\Generator as Faker;
 $factory->define(Article::class, function (Faker $faker) {
     return [
         'user_id' => $faker->randomNumber(),
-        'title' => $faker->text(),
+        'title' => $faker->word(),
         'tag1' => $faker->word(),
         'tag2' => $faker->word(),
         'tag3' => $faker->word(),
         'body' => $faker->text(),
         'date' => $faker->date(),
-        'status' => $faker->numberBetween(0,1)
+        'status' => $faker->numberBetween(0,1),
+        'importance' => $faker->numberBetween(0,2),
     ];
 });

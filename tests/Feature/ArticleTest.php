@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
+use App\Article;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ArticleTest extends TestCase
@@ -12,51 +12,17 @@ class ArticleTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * @test
-     */
-    public function ログイン画面へアクセス()
-    {
-        $response = $this->get('/login');
-        $response->assertStatus(200);
-        //認証されていないことを確認
-        $this->assertGuest();
-    }
-
-    /**
-     * @test
-     */
-    public function 未ログイン状態でホーム画面へアクセス()
-    {
-        $response = $this->get('/home');
-        $response->assertStatus(302)
-            ->assertRedirect('/login'); //リダイレクト先を確認
-        $this->assertGuest();
-    }
-
-    /**
-     * @test
-     */
-    public function ログイン状態でホーム画面へアクセス()
-    {
-        $this->assertGuest();
-
-        $response = $this->dummyLogin();
-        $response->assertStatus(200);
-        //認証を確認
-        $this->assertAuthenticated();
-    }
-
-    /**
      * ダミーログイン処理
-     * @return \Illuminate\Testing\TestResponse
      */
     public function dummyLogin()
     {
         $user = factory(User::class)->create();
 
-        return  $this->actingAs($user)
+        $this->actingAs($user)
             ->withSession(['user_id', $user->id])
             ->get(route('home'));
+
+        return $user;
     }
 
     /**
@@ -88,5 +54,174 @@ class ArticleTest extends TestCase
         $this->dummyLogin();
         $response = $this->get(route('myBookmark'));
         $response->assertStatus(200);
+    }
+
+    /**
+     * @test
+     */
+    public function ステータス「投稿」時の追加処理テスト()
+    {
+        $this->dummyLogin();
+
+        $response = $this->post(route('add'), [
+            "importance" => "0",
+            "title" => "テストタイトル",
+            "tags" => "テスト タグ",
+            "body" => "テスト本文",
+            "status" => Article::STATUS_POST,
+        ]);
+
+        //投稿処理後ホーム画面にリダイレクトするか確認
+        $response->assertRedirect(route('home'));
+
+        //ホーム画面に追加した記事タイトルが表示されているか確認
+        $this->get(route('home'))
+            ->assertSee('テストタイトル');
+
+        //マイページで追加した記事タイトルが表示されているか確認
+        $this->get(route('mypage'))
+            ->assertSee('テストタイトル');
+    }
+
+    /**
+     * @test
+     */
+    public function ステータス「下書き」時の追加処理テスト()
+    {
+        $this->dummyLogin();
+
+        $response = $this->post(route('add'), [
+            "importance" => "0",
+            "title" => "テスト下書きタイトル",
+            "tags" => "テスト タグ",
+            "body" => "テスト本文",
+            "status" => Article::STATUS_DRAFT,
+        ]);
+
+        $response->assertRedirect(route('home'));
+
+        //下書き一覧ページで下書き記事タイトルが表示されていることを確認
+        $this->get(route('draft'))
+            ->assertSee('テスト下書きタイトル');
+
+        //マイページで追加した記事タイトルが表示されているか確認
+        $this->get(route('mypage'))
+            ->assertSee('テスト下書きタイトル');
+    }
+
+    /**
+     * @test
+     */
+    public function 記事読み込み機能()
+    {
+        $this->dummyLogin();
+
+        $postArticle = factory(Article::class)->create([
+            'status' => Article::STATUS_POST,
+        ]);
+
+        $draftArticle = factory(Article::class)->create([
+            'status' => Article::STATUS_DRAFT,
+        ]);
+
+        $this->get(route('home'))
+            ->assertSee($postArticle->title)
+            ->assertDontSee($draftArticle->title);
+    }
+
+    /**
+     * @test
+     */
+    public function ステータス「投稿」時の記事更新処理テスト()
+    {
+        $user = $this->dummyLogin();
+
+        //更新処理ではログイン中のユーザーでしかできない仕様のため、ファクトリでuser_idの値をオーバーライドする
+        $article = factory(Article::class)->create([
+            'user_id' =>$user->id,
+            'status' => Article::STATUS_POST,
+        ]);
+
+        //データベースにデータが登録されていることを確認
+        $this->assertDatabaseHas('articles', [
+            'title' => $article->title,
+        ]);
+
+        $response = $this->post(route('update'), [
+            'importance' => '0',
+            'title' => '更新処理テストタイトル（投稿）',
+            'tags' => '更新 テスト',
+            'body' => '更新処理完了',
+            'article_id' => $article->article_id,
+            //ステータスが「投稿」の場合は、編集画面でステータスの変更はできない仕様のため、ここでの処理では記載しない
+        ]);
+
+        $response->assertRedirect(route('mypage'));
+
+        $this->assertDatabaseHas('articles', [
+            'title' => '更新処理テストタイトル（投稿）',
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function ステータス「下書き」から「投稿」へ記事更新処理テスト()
+    {
+        $user = $this->dummyLogin();
+
+        //更新処理ではログイン中のユーザーでしかできない仕様のため、ファクトリでuser_idの値をオーバーライドする
+        $article = factory(Article::class)->create([
+            'user_id' =>$user->id,
+            'status' => Article::STATUS_DRAFT,
+        ]);
+
+        //データベースにデータが登録されていることを確認
+        $this->assertDatabaseHas('articles', [
+            'title' => $article->title,
+        ]);
+
+        $response = $this->post(route('update'), [
+            'importance' => '0',
+            'title' => '更新処理テストタイトル（下書き）',
+            'tags' => '更新 テスト',
+            'body' => '更新処理完了',
+            'article_id' => $article->article_id,
+            'status' => Article::STATUS_POST,
+        ]);
+
+        $response->assertRedirect(route('mypage'));
+
+        $this->assertDatabaseHas('articles', [
+            'title' => '更新処理テストタイトル（下書き）',
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function 記事削除処理テスト()
+    {
+        $user = $this->dummyLogin();
+
+        $article = factory(Article::class)->create([
+            'user_id' => $user->id,
+        ]);
+
+        //データベースにデータが登録されていることを確認
+        $this->assertDatabaseHas('articles', [
+            'title' => $article->title,
+        ]);
+
+        $response = $this->post(route('delete'), [
+            'article_id' => $article->article_id,
+        ]);
+
+        $response->assertRedirect(route('mypage'));
+
+        //データがテーブルから削除されていることを確認
+        $this->assertDatabaseMissing('articles', [
+            'title' => $article->title,
+        ]);
     }
 }

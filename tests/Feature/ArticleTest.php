@@ -13,15 +13,16 @@ class ArticleTest extends TestCase
 
     /**
      * ダミーログイン処理
-     * @return \Illuminate\Testing\TestResponse
      */
     public function dummyLogin()
     {
         $user = factory(User::class)->create();
 
-        return  $this->actingAs($user)
+        $this->actingAs($user)
             ->withSession(['user_id', $user->id])
             ->get(route('home'));
+
+        return $user;
     }
 
     /**
@@ -113,11 +114,7 @@ class ArticleTest extends TestCase
      */
     public function ステータス「投稿」時の記事更新処理テスト()
     {
-        $user = factory(User::class)->create();
-
-        $this->actingAs($user)
-            ->withSession(['user_id', $user->id])
-            ->get(route('home'));
+        $user = $this->dummyLogin();
 
         //更新処理ではログイン中のユーザーでしかできない仕様のため、ファクトリでuser_idの値をオーバーライドする
         $article = factory(Article::class)->create([
@@ -151,11 +148,7 @@ class ArticleTest extends TestCase
      */
     public function ステータス「下書き」から「投稿」へ記事更新処理テスト()
     {
-        $user = factory(User::class)->create();
-
-        $this->actingAs($user)
-            ->withSession(['user_id', $user->id])
-            ->get(route('home'));
+        $user = $this->dummyLogin();
 
         //更新処理ではログイン中のユーザーでしかできない仕様のため、ファクトリでuser_idの値をオーバーライドする
         $article = factory(Article::class)->create([
@@ -183,17 +176,13 @@ class ArticleTest extends TestCase
             'title' => '更新処理テストタイトル（下書き）',
         ]);
     }
-    
+
     /**
      * @test
      */
     public function 記事削除処理テスト()
     {
-        $user = factory(User::class)->create();
-
-        $this->actingAs($user)
-            ->withSession(['user_id', $user->id])
-            ->get(route('home'));
+        $user = $this->dummyLogin();
 
         $article = factory(Article::class)->create([
             'user_id' => $user->id,

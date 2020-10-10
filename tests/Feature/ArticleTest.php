@@ -224,4 +224,28 @@ class ArticleTest extends TestCase
             'title' => $article->title,
         ]);
     }
+
+    /**
+     * @test
+     */
+    public function 指定記事ページ読み込み処理テスト()
+    {
+        $this->dummyLogin();
+
+        $writer = factory(User::class)->create();
+
+        $article = factory(Article::class)->create([
+            'user_id' => $writer->id,
+        ]);
+
+        $response = $this->get(route('show', [
+            'id' => $article->article_id
+        ]));
+
+        $response->assertSee("投稿者：".$writer->name)
+            ->assertSee($article->title)
+            ->assertSee($article->tag1)
+            ->assertSee('コメント')
+            ->assertSee('返信フォーム');
+    }
 }

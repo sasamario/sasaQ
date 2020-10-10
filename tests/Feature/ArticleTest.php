@@ -5,47 +5,11 @@ namespace Tests\Feature;
 use App\Article;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ArticleTest extends TestCase
 {
     use RefreshDatabase;
-
-    /**
-     * @test
-     */
-    public function ログイン画面へアクセス()
-    {
-        $response = $this->get('/login');
-        $response->assertStatus(200);
-        //認証されていないことを確認
-        $this->assertGuest();
-    }
-
-    /**
-     * @test
-     */
-    public function 未ログイン状態でホーム画面へアクセス()
-    {
-        $response = $this->get('/home');
-        $response->assertStatus(302)
-            ->assertRedirect('/login'); //リダイレクト先を確認
-        $this->assertGuest();
-    }
-
-    /**
-     * @test
-     */
-    public function ログイン状態でホーム画面へアクセス()
-    {
-        $this->assertGuest();
-
-        $response = $this->dummyLogin();
-        $response->assertStatus(200);
-        //認証を確認
-        $this->assertAuthenticated();
-    }
 
     /**
      * ダミーログイン処理

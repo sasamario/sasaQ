@@ -112,6 +112,26 @@ class ArticleTest extends TestCase
     /**
      * @test
      */
+    public function 記事読み込み機能()
+    {
+        $this->dummyLogin();
+
+        $postArticle = factory(Article::class)->create([
+            'status' => Article::STATUS_POST,
+        ]);
+
+        $draftArticle = factory(Article::class)->create([
+            'status' => Article::STATUS_DRAFT,
+        ]);
+
+        $this->get(route('home'))
+            ->assertSee($postArticle->title)
+            ->assertDontSee($draftArticle->title);
+    }
+
+    /**
+     * @test
+     */
     public function ステータス「投稿」時の記事更新処理テスト()
     {
         $user = $this->dummyLogin();

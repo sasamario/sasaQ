@@ -181,4 +181,42 @@ class ArticleTest extends TestCase
             'title' => '更新処理テストタイトル（投稿）',
         ]);
     }
+
+    /**
+     * @test
+     */
+    public function ステータス「下書き」から「投稿」へ記事更新処理テスト()
+    {
+        $user = factory(User::class)->create();
+
+        $this->actingAs($user)
+            ->withSession(['user_id', $user->id])
+            ->get(route('home'));
+
+        //更新処理ではログイン中のユーザーでしかできない仕様のため、ファクトリでuser_idの値をオーバーライドする
+        $article = factory(Article::class)->create([
+            'user_id' =>$user->id,
+            'status' => Article::STATUS_DRAFT,
+        ]);
+
+        //データベースにデータが登録されていることを確認
+        $this->assertDatabaseHas('articles', [
+            'title' => $article->title,
+        ]);
+
+        $response = $this->post(route('update'), [
+            'importance' => '0',
+            'title' => '更新処理テストタイトル（下書き）',
+            'tags' => '更新 テスト',
+            'body' => '更新処理完了',
+            'article_id' => $article->article_id,
+            'status' => Article::STATUS_POST,
+        ]);
+
+        $response->assertRedirect(route('mypage'));
+
+        $this->assertDatabaseHas('articles', [
+            'title' => '更新処理テストタイトル（下書き）',
+        ]);
+    }
 }

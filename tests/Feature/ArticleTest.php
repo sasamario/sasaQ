@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Article;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -102,7 +103,7 @@ class ArticleTest extends TestCase
             "title" => "テストタイトル",
             "tags" => "テスト タグ",
             "body" => "テスト本文",
-            "status" => "1",
+            "status" => Article::STATUS_POST,
         ]);
 
         //投稿処理後ホーム画面にリダイレクトするか確認
@@ -129,7 +130,7 @@ class ArticleTest extends TestCase
             "title" => "テスト下書きタイトル",
             "tags" => "テスト タグ",
             "body" => "テスト本文",
-            "status" => "0",
+            "status" => Article::STATUS_DRAFT,
         ]);
 
         $response->assertRedirect(route('home'));

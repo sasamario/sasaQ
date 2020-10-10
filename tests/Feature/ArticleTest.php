@@ -183,4 +183,36 @@ class ArticleTest extends TestCase
             'title' => '更新処理テストタイトル（下書き）',
         ]);
     }
+    
+    /**
+     * @test
+     */
+    public function 記事削除処理テスト()
+    {
+        $user = factory(User::class)->create();
+
+        $this->actingAs($user)
+            ->withSession(['user_id', $user->id])
+            ->get(route('home'));
+
+        $article = factory(Article::class)->create([
+            'user_id' => $user->id,
+        ]);
+
+        //データベースにデータが登録されていることを確認
+        $this->assertDatabaseHas('articles', [
+            'title' => $article->title,
+        ]);
+
+        $response = $this->post(route('delete'), [
+            'article_id' => $article->article_id,
+        ]);
+
+        $response->assertRedirect(route('mypage'));
+
+        //データがテーブルから削除されていることを確認
+        $this->assertDatabaseMissing('articles', [
+            'title' => $article->title,
+        ]);
+    }
 }

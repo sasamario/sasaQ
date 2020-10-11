@@ -248,4 +248,24 @@ class ArticleTest extends TestCase
             ->assertSee('コメント')
             ->assertSee('返信フォーム');
     }
+
+    /**
+     * @test
+     */
+    public function マイページでの指定記事ページ読み込み処理テスト()
+    {
+        $user = $this->dummyLogin();
+
+        $article = factory(Article::class)->create([
+            'user_id' => $user->id,
+        ]);
+
+        $response = $this->get(route('myarticle', [
+            'id' => $article->article_id
+        ]));
+
+        $response->assertSee($article->date)
+            ->assertSee($article->title)
+            ->assertSee($article->tag1);
+    }
 }

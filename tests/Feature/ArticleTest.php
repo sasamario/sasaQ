@@ -49,6 +49,24 @@ class ArticleTest extends TestCase
     /**
      * @test
      */
+    public function 編集ページへアクセス()
+    {
+        $user = $this->dummyLogin();
+
+        $article = factory(Article::class)->create([
+            'user_id' => $user->id,
+        ]);
+
+        $response = $this->post(route('edit'), [
+            'article_id' => $article->article_id,
+        ]);
+
+        $response->assertStatus(200);
+    }
+
+    /**
+     * @test
+     */
     public function ブックマーク一覧へアクセス()
     {
         $this->dummyLogin();

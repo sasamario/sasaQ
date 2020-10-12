@@ -288,4 +288,22 @@ class ArticleTest extends TestCase
             ->assertSee($article->title)
             ->assertSee($article->tag1);
     }
+    
+    /**
+     * @test
+     */
+    public function ヒットした場合の検索機能テスト()
+    {
+        $this->dummyLogin();
+
+        $article = factory(Article::class)->create([
+            'body' => '検索用本文',
+        ]);
+
+        $response = $this->get(route('search', [
+            'search' => '検索用',
+        ]));
+        $response->assertSee('検索件数：1件')
+            ->assertSee($article->title);
+    }
 }

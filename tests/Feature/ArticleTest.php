@@ -136,10 +136,12 @@ class ArticleTest extends TestCase
 
         $postArticle = factory(Article::class)->create([
             'status' => Article::STATUS_POST,
+            'title' => '投稿済み記事タイトル',
         ]);
 
         $draftArticle = factory(Article::class)->create([
             'status' => Article::STATUS_DRAFT,
+            'title' => '下書き記事タイトル',
         ]);
 
         $this->get(route('home'))

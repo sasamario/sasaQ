@@ -341,4 +341,21 @@ class ArticleTest extends TestCase
         $response->assertSee('検索件数：1件')
             ->assertSee($article->title);
     }
+
+    /**
+     * @test
+     */
+    public function ヒットしなかった場合のタグ検索機能テスト()
+    {
+        $this->dummyLogin();
+
+        factory(Article::class)->create([
+            'tag1' => 'Laravel',
+        ]);
+
+        $response = $this->get(route('searchTag', [
+            'tag' => '検索テスト',
+        ]));
+        $response->assertSee('検索件数：0件');
+    }
 }

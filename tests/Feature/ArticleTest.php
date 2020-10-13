@@ -288,7 +288,7 @@ class ArticleTest extends TestCase
             ->assertSee($article->title)
             ->assertSee($article->tag1);
     }
-    
+
     /**
      * @test
      */
@@ -305,5 +305,22 @@ class ArticleTest extends TestCase
         ]));
         $response->assertSee('検索件数：1件')
             ->assertSee($article->title);
+    }
+
+    /**
+     * @test
+     */
+    public function ヒットしなかった場合の検索機能テスト()
+    {
+        $this->dummyLogin();
+
+        factory(Article::class)->create([
+            'body' => '検索用本文',
+        ]);
+
+        $response = $this->get(route('search', [
+            'search' => 'hogehoge',
+        ]));
+        $response->assertSee('検索件数：0件');
     }
 }

@@ -49,6 +49,24 @@ class ArticleTest extends TestCase
     /**
      * @test
      */
+    public function 編集ページへアクセス()
+    {
+        $user = $this->dummyLogin();
+
+        $article = factory(Article::class)->create([
+            'user_id' => $user->id,
+        ]);
+
+        $response = $this->post(route('edit'), [
+            'article_id' => $article->article_id,
+        ]);
+
+        $response->assertStatus(200);
+    }
+
+    /**
+     * @test
+     */
     public function ブックマーク一覧へアクセス()
     {
         $this->dummyLogin();
@@ -118,10 +136,12 @@ class ArticleTest extends TestCase
 
         $postArticle = factory(Article::class)->create([
             'status' => Article::STATUS_POST,
+            'title' => '投稿済み記事タイトル',
         ]);
 
         $draftArticle = factory(Article::class)->create([
             'status' => Article::STATUS_DRAFT,
+            'title' => '下書き記事タイトル',
         ]);
 
         $this->get(route('home'))
@@ -223,5 +243,162 @@ class ArticleTest extends TestCase
         $this->assertDatabaseMissing('articles', [
             'title' => $article->title,
         ]);
+    }
+
+    /**
+     * @test
+     */
+    public function 指定記事ページ読み込み処理テスト()
+    {
+        $this->dummyLogin();
+
+        $writer = factory(User::class)->create();
+
+        $article = factory(Article::class)->create([
+            'user_id' => $writer->id,
+        ]);
+
+        $response = $this->get(route('show', [
+            'id' => $article->article_id
+        ]));
+
+        $response->assertSee("投稿者：".$writer->name)
+            ->assertSee($article->title)
+            ->assertSee($article->tag1)
+            ->assertSee('コメント')
+            ->assertSee('返信フォーム');
+    }
+
+    /**
+     * @test
+     */
+    public function マイページでの指定記事ページ読み込み処理テスト()
+    {
+        $user = $this->dummyLogin();
+
+        $article = factory(Article::class)->create([
+            'user_id' => $user->id,
+        ]);
+
+        $response = $this->get(route('myarticle', [
+            'id' => $article->article_id
+        ]));
+
+        $response->assertSee($article->date)
+            ->assertSee($article->title)
+            ->assertSee($article->tag1);
+    }
+
+    /**
+     * @test
+     */
+    public function ヒットした場合の検索機能テスト()
+    {
+        $this->dummyLogin();
+
+        $article = factory(Article::class)->create([
+            'body' => '検索用本文',
+        ]);
+
+        $response = $this->get(route('search', [
+            'search' => '検索用',
+        ]));
+        $response->assertSee('検索件数：1件')
+            ->assertSee($article->title);
+    }
+
+    /**
+     * @test
+     */
+    public function ヒットしなかった場合の検索機能テスト()
+    {
+        $this->dummyLogin();
+
+        factory(Article::class)->create([
+            'body' => '検索用本文',
+        ]);
+
+        $response = $this->get(route('search', [
+            'search' => 'hogehoge',
+        ]));
+        $response->assertSee('検索件数：0件');
+    }
+
+    /**
+     * @test
+     */
+    public function ヒットした場合のタグ検索機能テスト()
+    {
+        $this->dummyLogin();
+
+        $article = factory(Article::class)->create([
+            'tag1' => 'Laravel',
+        ]);
+
+        $response = $this->get(route('searchTag', [
+            'tag' => $article->tag1,
+        ]));
+        $response->assertSee('検索件数：1件')
+            ->assertSee($article->title);
+    }
+
+    /**
+     * @test
+     */
+    public function ヒットしなかった場合のタグ検索機能テスト()
+    {
+        $this->dummyLogin();
+
+        factory(Article::class)->create([
+            'tag1' => 'Laravel',
+        ]);
+
+        $response = $this->get(route('searchTag', [
+            'tag' => '検索テスト',
+        ]));
+        $response->assertSee('検索件数：0件');
+    }
+
+    /**
+     * @test
+     */
+    public function 下書き一覧へのアクセステスト()
+    {
+        $user = $this->dummyLogin();
+
+        $postArticle = factory(Article::class)->create([
+            'user_id' => $user->id,
+            'status' => Article::STATUS_POST,
+            'title' => '投稿記事',
+        ]);
+
+        $draftArticle = factory(Article::class)->create([
+            'user_id' => $user->id,
+            'status' => Article::STATUS_DRAFT,
+            'title' => '下書き記事',
+        ]);
+
+        $response = $this->get(route('draft'));
+        $response->assertDontSee($postArticle->title)
+            ->assertSee($draftArticle->title);
+    }
+
+    /**
+     * @test
+     */
+    public function 下書き記事へのアクセステスト()
+    {
+        $user = $this->dummyLogin();
+
+        $article = factory(Article::class)->create([
+           'user_id' => $user->id,
+        ]);
+
+        $response = $this->get(route('showDraft', [
+            'id' => $article->article_id,
+        ]));
+        $response->assertSee($article->date)
+            ->assertSee($article->title)
+            ->assertSee($article->tag1);
     }
 }

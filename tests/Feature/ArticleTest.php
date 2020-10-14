@@ -382,4 +382,23 @@ class ArticleTest extends TestCase
         $response->assertDontSee($postArticle->title)
             ->assertSee($draftArticle->title);
     }
+
+    /**
+     * @test
+     */
+    public function 下書き記事へのアクセステスト()
+    {
+        $user = $this->dummyLogin();
+
+        $article = factory(Article::class)->create([
+           'user_id' => $user->id,
+        ]);
+
+        $response = $this->get(route('showDraft', [
+            'id' => $article->article_id,
+        ]));
+        $response->assertSee($article->date)
+            ->assertSee($article->title)
+            ->assertSee($article->tag1);
+    }
 }

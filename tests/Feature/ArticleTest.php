@@ -358,4 +358,28 @@ class ArticleTest extends TestCase
         ]));
         $response->assertSee('検索件数：0件');
     }
+
+    /**
+     * @test
+     */
+    public function 下書き一覧へのアクセステスト()
+    {
+        $user = $this->dummyLogin();
+
+        $postArticle = factory(Article::class)->create([
+            'user_id' => $user->id,
+            'status' => Article::STATUS_POST,
+            'title' => '投稿記事',
+        ]);
+
+        $draftArticle = factory(Article::class)->create([
+            'user_id' => $user->id,
+            'status' => Article::STATUS_DRAFT,
+            'title' => '下書き記事',
+        ]);
+
+        $response = $this->get(route('draft'));
+        $response->assertDontSee($postArticle->title)
+            ->assertSee($draftArticle->title);
+    }
 }

@@ -54,7 +54,7 @@ class ReplyTest extends TestCase
             'id' => $article->article_id,
         ]))->assertSee('テストコメント');
     }
-    
+
     /**
      * コメント生成処理
      */
@@ -80,5 +80,25 @@ class ReplyTest extends TestCase
         ]);
         $response->assertStatus(200)
             ->assertSee($reply->body);
+    }
+
+    /**
+     * @test
+     */
+    public function コメント更新処理テスト()
+    {
+        $user = $this->dummyLogin();
+        $article = factory(Article::class)->create();
+        $reply = $this->createReply($user->id, $article->article_id);
+
+        $response = $this->post(route('updateReply'), [
+            'body' => 'コメント編集確認',
+            'reply_id' => $reply->reply_id
+        ]);
+        $response->assertRedirect(route('mypage'));
+
+        $this->assertDatabaseHas('replies', [
+            'body' => 'コメント編集確認',
+        ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Article;
+use App\Reply;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -52,5 +53,16 @@ class ReplyTest extends TestCase
         $this->get(route('show', [
             'id' => $article->article_id,
         ]))->assertSee('テストコメント');
+    }
+    
+    /**
+     * コメント生成処理
+     */
+    public function createReply(int $userId, int $articleId)
+    {
+        return factory(Reply::class)->create([
+            'user_id' => $userId,
+            'article_id' => $articleId
+        ]);
     }
 }

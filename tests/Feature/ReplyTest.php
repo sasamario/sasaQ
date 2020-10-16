@@ -65,4 +65,20 @@ class ReplyTest extends TestCase
             'article_id' => $articleId
         ]);
     }
+
+    /**
+     * @test
+     */
+    public function コメント編集ページへのアクセステスト()
+    {
+        $user = $this->dummyLogin();
+        $article = factory(Article::class)->create();
+        $reply = $this->createReply($user->id, $article->article_id);
+
+        $response = $this->post(route('editReply'), [
+            'reply_id' => $reply->reply_id,
+        ]);
+        $response->assertStatus(200)
+            ->assertSee($reply->body);
+    }
 }

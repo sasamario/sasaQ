@@ -92,13 +92,9 @@ class ArticleTest extends TestCase
         //投稿処理後ホーム画面にリダイレクトするか確認
         $response->assertRedirect(route('home'));
 
-        //ホーム画面に追加した記事タイトルが表示されているか確認
-        $this->get(route('home'))
-            ->assertSee('テストタイトル');
-
-        //マイページで追加した記事タイトルが表示されているか確認
-        $this->get(route('mypage'))
-            ->assertSee('テストタイトル');
+        $this->assertDatabaseHas('articles', [
+            'title' => 'テストタイトル',
+        ]);
     }
 
     /**

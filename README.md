@@ -12,6 +12,12 @@ sasaQは、社内向け質問サイトです。
 （例えば、毎年新卒が同じような質問をするなど）
 そこで、社内向けの質問サービスがあれば質問や回答がデータとして蓄積していくため、回答者の負担を減らすことが出来ると考えたからです。
 
+# デモ動画
+[デモ１](https://raw.githubusercontent.com/wiki/sasamario/sasaQ/images/sasaQdemo1.gif)
+[デモ２](https://raw.githubusercontent.com/wiki/sasamario/sasaQ/images/sasaQdemo2.gif)
+[デモ３](https://raw.githubusercontent.com/wiki/sasamario/sasaQ/images/sasaQdemo3.gif)
+
+Slack通知機能時![sasaQslack](https://user-images.githubusercontent.com/43754736/96087690-3a26c200-0eff-11eb-89ae-cc74191348f3.PNG)
 # 使用言語/フレームワーク/ライブラリ
 - PHP:7.3.18
 - Laravel:7.20.0
@@ -28,12 +34,13 @@ sasaQは、社内向け質問サイトです。
 - 記事投稿画面でのプレビュー機能
 - ブックマーク機能
 - 下書き保存機能
-- Slack通知機能
+- Slack通知機能（記事、コメント投稿時）
 - Googleログイン
 - 検索機能
 - タグ検索機能
 - ページネーション機能
 - ヘルプモーダル
+- 機能テスト（PHPUnit）
 
 
 

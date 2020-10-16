@@ -101,4 +101,27 @@ class ReplyTest extends TestCase
             'body' => 'コメント編集確認',
         ]);
     }
+
+    /**
+     * @test
+     */
+    public function コメント削除処理テスト()
+    {
+        $user = $this->dummyLogin();
+        $article = factory(Article::class)->create();
+        $reply = $this->createReply($user->id, $article->article_id);
+
+        $this->assertDatabaseHas('replies', [
+            'body' => $reply->body,
+        ]);
+
+        $response = $this->post(route('deleteReply'), [
+            'reply_id' => $reply->reply_id,
+        ]);
+        $response->assertRedirect(route('mypage'));
+
+        $this->assertDatabaseMissing('replies', [
+            'body' => $reply->body,
+        ]);
+    }
 }

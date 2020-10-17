@@ -114,13 +114,9 @@ class ArticleTest extends TestCase
 
         $response->assertRedirect(route('home'));
 
-        //下書き一覧ページで下書き記事タイトルが表示されていることを確認
-        $this->get(route('draft'))
-            ->assertSee('テスト下書きタイトル');
-
-        //マイページで追加した記事タイトルが表示されているか確認
-        $this->get(route('mypage'))
-            ->assertSee('テスト下書きタイトル');
+        $this->assertDatabaseHas('articles', [
+            'title' => 'テスト下書きタイトル',
+        ]);
     }
 
     /**

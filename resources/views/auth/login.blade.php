@@ -36,7 +36,6 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                                <p class="mb-0 mt-3">テストログイン用メールアドレス<br/>e-mail：<strong>test@test.jp</strong>  / passward：<strong>testtest</strong></p>
                             </div>
                         </div>
 
@@ -56,6 +55,9 @@
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
+                                </button>
+                                <button type="submit" class="btn btn-secondary guest-btn">
+                                    <a href="/login/guest">Guest Login</a>
                                 </button>
                                 <button type="submit" class="btn twitter-btn">
                                     <a href="/auth/twitter"><i class="fab fa-twitter"></i> Twitter Login</a>

@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+///ゲストログインのルート
+Route::get('/login/guest', 'Auth\LoginController@guestLogin');
+
 //Twitterログインでのルート
 Route::get('/auth/twitter', 'Auth\TwitterController@redirectToProvider');
 Route::get('/auth/twitter/callback', 'Auth\TwitterController@handleProviderCallback');

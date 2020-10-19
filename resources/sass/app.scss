@@ -53,20 +53,19 @@ body {
     }
 }
 
-.twitter-btn {
-  background-color: #00aced;
-  a {
-    color: white;
-    text-decoration: none;
-  }
-}
-
-.google-btn {
-    background-color: #4285f4;
+.btn {
     a {
         color: white;
         text-decoration: none;
     }
+}
+
+.twitter-btn {
+    background-color: #00aced;
+}
+
+.google-btn {
+    background-color: #4285f4;
 }
 
 .register {

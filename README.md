@@ -30,12 +30,13 @@ Slack通知機能時![sasaQslack](https://user-images.githubusercontent.com/4375
 # 実装済み機能
 - ログイン機能
 - Twitterログイン
+- Googleログイン
+- ゲストログイン
 - CRUD機能【記事（質問）・コメント】
 - 記事投稿画面でのプレビュー機能
 - ブックマーク機能
 - 下書き保存機能
 - Slack通知機能（記事、コメント投稿時）
-- Googleログイン
 - 検索機能
 - タグ検索機能
 - ページネーション機能

@@ -39,16 +39,6 @@ class ArticleTest extends TestCase
     /**
      * @test
      */
-    public function マイページへアクセス()
-    {
-        $this->dummyLogin();
-        $response = $this->get(route('mypage'));
-        $response->assertStatus(200);
-    }
-
-    /**
-     * @test
-     */
     public function 編集ページへアクセス()
     {
         $user = $this->dummyLogin();

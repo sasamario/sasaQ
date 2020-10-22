@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Article;
+use App\Bookmark;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -40,6 +41,31 @@ class BookmarkTest extends TestCase
 
         $this->assertDatabaseHas('bookmarks', [
            'article_id' => $article->article_id,
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function ブックマーク削除処理テスト()
+    {
+        $user = $this->dummyLogin();
+
+        $article = factory(Article::class)->create();
+        factory(Bookmark::class)->create([
+            'user_id' => $user->id,
+            'article_id' => $article->article_id,
+        ]);
+        $this->assertDatabaseHas('bookmarks', [
+            'article_id' => $article->article_id,
+        ]);
+
+        $this->post(route('deleteBookmark'), [
+            'articleId' => $article->article_id,
+        ]);
+
+        $this->assertDatabaseMissing('bookmarks', [
+            'article_id' => $article->article_id,
         ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Article;
+use App\Bookmark;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -59,9 +60,16 @@ class ArticleTest extends TestCase
      */
     public function ブックマーク一覧へアクセス()
     {
-        $this->dummyLogin();
+        $user = $this->dummyLogin();
+
+        $article = factory(Article::class)->create();
+        factory(Bookmark::class)->create([
+            'user_id' => $user->id,
+            'article_id' => $article->article_id,
+        ]);
+
         $response = $this->get(route('myBookmark'));
-        $response->assertStatus(200);
+        $response->assertSee($article->title);
     }
 
     /**

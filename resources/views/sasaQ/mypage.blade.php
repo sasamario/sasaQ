@@ -10,12 +10,13 @@
                 <div class="user-left-box float-left col-5">
                     <div class="user-icon">
                         @if (Auth::user()->avatar)
-                            <img class="twitter-avatar" src="{{ Auth::user()->avatar }}">
+                            <img class="avatar" src="{{ Auth::user()->avatar }}">
                         @else
                             <i class="fas fa-user fa-3x"></i>
                         @endif
                     </div>
                     <p class="user-name">{{ Auth::user()->name }}さん</p>
+                    <a href="{{route('editProfile')}}">プロフィール編集</a>
                 </div>
                 <div class="user-right-box float-right col-5">
                     <p class="article-count">総投稿数：{{$myArticlesCount}}</p>

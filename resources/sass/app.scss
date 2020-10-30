@@ -235,11 +235,12 @@ body {
       .user-left-box {
         margin: 0.5rem;
         padding: 0rem;
+        text-align: center;
         .user-icon {
           height: 80%;
           display: flex;
           justify-content: center;
-          .twitter-avatar {
+          .avatar {
             border-radius: 50%;
             width: 100px;
             height: 100px;
@@ -251,13 +252,12 @@ body {
           }
         }
         .user-name {
-          text-align: center;
           margin: 0.5rem;
         }
       }
       //ユーザーの記事数・返信数のbox
       .user-right-box {
-        padding: 1.5rem 0;
+        padding: 2.5rem 0;
         .article-count, .reply-count {
           font-size: 1.5rem;
           text-align: center;

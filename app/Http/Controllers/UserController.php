@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Service\UserService;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -34,5 +33,13 @@ class UserController extends Controller
 
         return view('sasaQ.mypage', compact('myArticles', 'myReplies', 'myArticlesCount', 'myRepliesCount'));
 
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit()
+    {
+        return view('sasaQ.editProfile');
     }
 }

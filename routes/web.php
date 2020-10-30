@@ -100,3 +100,6 @@ Route::get('/draft', 'ArticleController@readDraft')->name('draft');
 
 //下書き記事へのルート
 Route::get('/draft/article/{id}', 'ArticleController@showDraft')->name('showDraft');
+
+//プロフィール編集ページへのルート
+Route::get('/mypage/profile/edit', 'UserController@edit')->name('editProfile');

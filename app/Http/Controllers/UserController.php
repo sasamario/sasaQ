@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Http\Service\UserService;
 
 class UserController extends Controller
@@ -41,5 +42,16 @@ class UserController extends Controller
     public function edit()
     {
         return view('sasaQ.editProfile');
+    }
+
+    /**
+     * @param UserRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(UserRequest $request)
+    {
+        $this->userService->updateProfile($request);
+
+        return redirect()->route('mypage');
     }
 }

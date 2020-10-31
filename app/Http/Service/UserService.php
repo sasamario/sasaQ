@@ -2,10 +2,12 @@
 
 namespace App\Http\Service;
 
+use App\Http\Requests\UserRequest;
 use App\User;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserService
 {
@@ -48,5 +50,29 @@ class UserService
     public function countMyReplies(): int
     {
         return User::find(Auth::id())->replies->count();
+    }
+
+    /**
+     * @param UserRequest $request
+     */
+    public function updateProfile(UserRequest $request): void
+    {
+        if ($request->avatar == null) {
+            $avatarPath = Auth::user()->avatar;
+        } else {
+            $avatar = $request->file('avatar');
+
+            //imagesというファイルに、第二引数に指定した画像を保存する
+            $path = Storage::disk('s3')->putFile('images', $avatar, 'public');
+
+            //アップロードした画像のフルパスを取得
+            $avatarPath = Storage::disk('s3')->url($path);
+        }
+
+        User::where('id', Auth::id())
+            ->update([
+               'name' => $request->name,
+               'avatar' => $avatarPath,
+            ]);
     }
 }

@@ -16,7 +16,7 @@
                         @endif
                     </div>
                     <p class="user-name">{{ Auth::user()->name }}さん</p>
-                    <a href="{{route('editProfile')}}">プロフィール編集</a>
+                    <a class="profile-edit-link" href="{{route('editProfile')}}">プロフィール編集</a>
                 </div>
                 <div class="user-right-box float-right col-5">
                     <p class="article-count">総投稿数：{{$myArticlesCount}}</p>

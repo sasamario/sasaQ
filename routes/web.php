@@ -103,3 +103,6 @@ Route::get('/draft/article/{id}', 'ArticleController@showDraft')->name('showDraf
 
 //プロフィール編集ページへのルート
 Route::get('/mypage/profile/edit', 'UserController@edit')->name('editProfile');
+
+//プロフィール更新時のルート
+Route::post('/mypage/profile/update', 'UserController@update')->name('updateProfile');

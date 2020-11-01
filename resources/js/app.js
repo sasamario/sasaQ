@@ -50,6 +50,7 @@ window.Vue = require('vue');
 
 //コンポーネントとタグの紐付け
 Vue.component('bookmark-component', require('./components/BookmarkComponent.vue').default);
+Vue.component('profile-image-preview-component', require('./components/ProfileImagePreviewComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

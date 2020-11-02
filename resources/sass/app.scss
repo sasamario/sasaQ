@@ -236,6 +236,9 @@ body {
         margin: 0.5rem;
         padding: 0rem;
         text-align: center;
+        .profile-edit-link {
+          color: #cc9c7a;
+        }
         .user-icon {
           height: 80%;
           display: flex;
@@ -367,4 +370,15 @@ body {
 .error-message {
   width: 60%;
   margin: 1.0rem auto 0rem;
+}
+
+//プロフィール編集ページ
+.edit-profile-form {
+    padding: 0.5rem 2rem;
+    .profile-form-box {
+        width: 100%;
+    }
+    .profile-form-submit {
+        text-align: right;
+    }
 }

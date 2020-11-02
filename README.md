@@ -42,6 +42,8 @@ Slack通知機能時![sasaQslack](https://user-images.githubusercontent.com/4375
 - ページネーション機能
 - ヘルプモーダル
 - 機能テスト（PHPUnit）
+- プロフィール画像アップロード機能（AWS S3）
+- 画像アップロード時のプレビュー機能
 
 
 

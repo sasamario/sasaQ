@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Http\Service\UserService;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -34,5 +34,24 @@ class UserController extends Controller
 
         return view('sasaQ.mypage', compact('myArticles', 'myReplies', 'myArticlesCount', 'myRepliesCount'));
 
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit()
+    {
+        return view('sasaQ.editProfile');
+    }
+
+    /**
+     * @param UserRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(UserRequest $request)
+    {
+        $this->userService->updateProfile($request);
+
+        return redirect()->route('mypage');
     }
 }

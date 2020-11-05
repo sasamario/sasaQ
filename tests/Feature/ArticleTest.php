@@ -134,9 +134,17 @@ class ArticleTest extends TestCase
             'title' => '下書き記事タイトル',
         ]);
 
+        $doneArticle = factory(Article::class)->create([
+            'status' => Article::STATUS_POST,
+            'title' => '解決済み記事タイトル',
+            'importance' => Article::STATUS_DONE,
+        ]);
+
         $this->get(route('home'))
             ->assertSee($postArticle->title)
-            ->assertDontSee($draftArticle->title);
+            ->assertDontSee($draftArticle->title)
+            ->assertSee($doneArticle->title)
+            ->assertSee('【解決】');
     }
 
     /**

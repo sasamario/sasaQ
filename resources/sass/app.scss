@@ -284,13 +284,6 @@ body {
         text-align: center;
         font-size: 1.5rem;
       }
-      .draft-status {
-          display: inline-block;
-          background-color: #DDDDDD;
-          color: #555555;
-          font-size: 1rem;
-          border-radius: 0.5rem;
-      }
     }
   }
 
@@ -315,6 +308,15 @@ body {
       }
     }
   }
+}
+
+//投稿状態と質問の解決状態に関するCSS
+.draft-status, .importance-status {
+    display: inline-block;
+    background-color: #DDDDDD;
+    color: #555555;
+    font-size: 1rem;
+    border-radius: 0.3rem;
 }
 
 //投稿・編集フォーム

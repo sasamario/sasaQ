@@ -49,4 +49,19 @@ class UserTest extends TestCase
             ->assertSee($article->title)
             ->assertSee($reply->body);
     }
+
+    /**
+     * @test
+     */
+    public function プロフィール編集ページへアクセステスト()
+    {
+        $user = $this->dummyLogin();
+
+        $response = $this->get(route('editProfile'));
+        $response->assertStatus(200)
+            ->assertSee('プロフィール編集フォーム')
+            ->assertSee('名前（必須）')
+            ->assertSee($user->name)
+            ->assertSee('プロフィール画像選択');
+    }
 }

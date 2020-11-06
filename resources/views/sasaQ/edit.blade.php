@@ -15,6 +15,9 @@
             <label>
                 <input type="radio" name="importance" value="{{ \App\Article::STATUS_OTHER }}">その他
             </label>
+            <label>
+                <input type="radio" name="importance" value="{{ \App\Article::STATUS_DONE }}">解決済み
+            </label>
         </div>
 
         <input type="text" class="form-control m-1" id="title-input" placeholder="タイトル（必須）" name="title" value="{{$editArticle->title}}">

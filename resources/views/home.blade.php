@@ -6,6 +6,11 @@
         <div class="article-box col-11 mx-auto py-3">
             <div class="article-title">
                 <a class="title" href="{{route('show', ['id' => $item->article_id])}}">{{$item->title}}</a>
+                <div class="importance-status">
+                    @if ($item->importance === \App\Article::STATUS_DONE)
+                        【解決】
+                    @endif
+                </div>
             </div>
             <div class="article-date">
                 {{$item->date}} に投稿

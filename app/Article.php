@@ -25,6 +25,9 @@ class Article extends Model
   //その他
   const STATUS_OTHER = 2;
 
+  //解決済み
+  const STATUS_DONE = 3;
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

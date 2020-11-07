@@ -64,4 +64,24 @@ class UserTest extends TestCase
             ->assertSee($user->name)
             ->assertSee('プロフィール画像選択');
     }
+
+    /**
+     * @test
+     */
+    public function プロフィール更新処理テスト()
+    {
+        $user = $this->dummyLogin();
+
+        //画像ありでテストをすると、テストのたびにS3に保存してしまうため今回は名前のみ変更
+        $response = $this->post(route('updateProfile'), [
+            'name' => '名前変更さん',
+        ]);
+        $response->assertRedirect(route('mypage'));
+
+        $this->assertDatabaseHas('users', [
+            'name' => '名前変更さん',
+        ])->assertDatabaseMissing('users', [
+            'name' => $user->name,
+        ]);
+    }
 }

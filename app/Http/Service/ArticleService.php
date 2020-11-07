@@ -42,7 +42,8 @@ class ArticleService
     public function readArticles(): LengthAwarePaginator
     {
         return Article::join('users', 'articles.user_id', '=', 'users.id')
-            ->where('articles.status', Article::STATUS_POST)->orWhere('articles.status', 'null')
+            ->where('articles.status', Article::STATUS_POST)
+            ->orWhere('articles.status', null)
             ->orderBy('articles.created_at', 'desc')
             ->paginate(15);
     }

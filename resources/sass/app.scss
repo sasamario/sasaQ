@@ -387,3 +387,21 @@ body {
         text-align: right;
     }
 }
+
+.writer-avatar {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    .fa-user {
+        border:3px solid black;
+        padding: 0.3rem;
+        font-size: 2rem;
+        text-align: center;
+    }
+    .profile-avatar {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        margin: auto 0;
+    }
+}

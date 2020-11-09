@@ -334,7 +334,9 @@ body {
     }
 }
 
-.help-button {
+.template-button, .help-button {
+    display: inline-block;
+    margin: 0 0.5rem;
     cursor: pointer;
 }
 

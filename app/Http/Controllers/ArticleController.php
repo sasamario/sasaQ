@@ -106,9 +106,12 @@ class ArticleController extends Controller
      */
     public function update(ArticleRequest $request)
     {
+        $beforeUpdateArticle = $this->articleService->showArticle($request->article_id);
+
         $this->articleService->updateArticle($request);
 
-        if ($request->status == Article::STATUS_POST) {
+        //更新の度にSlackへの通知は多すぎるため、記事の状態が「下書き」から「投稿」に変わったときのみ通知する
+        if ($beforeUpdateArticle->status == Article::STATUS_DRAFT && $request->status == Article::STATUS_POST) {
             $this->articleService->sendSlackNotification($request);
         }
 

@@ -16,6 +16,26 @@ $(function() {
         sanitize: true, //サニタイズ処理のオプション　これがないと攻撃的なスクリプトを実行されてしまう
     });
 
+    //テンプレート文章を表示する
+    $('#template').click(function() {
+        const templateBody = (
+            "# 結論\n" +
+            "例）〇〇について分からなかった点がありますのでご教授お願いいたします。\n" +
+            "例）〇〇のエラーが解決できていない状態ですのでアドバイスをいただきたいです。\n\n" +
+            "# やったこと・調べたこと\n" +
+            "例）Qiitaの〇〇という記事を参考に、△△を行いました。\n" +
+            "例）30分程、公式ドキュメントや書籍で△△エラーについて調べました。\n\n" +
+            "# 自分の考え\n" +
+            "例）△△を行ったが解決できなかったため、〇□にミスがあるのではないかと考えています。\n\n" +
+            "お手すきにご対応お願いいたします。"
+        );
+
+        $('#markdown_editor_textarea').focus().val($('#markdown_editor_textarea').val() + templateBody);
+
+        let markedTemplate = marked(templateBody);
+        $('#markdown_preview').html($('#markdown_preview').html() + markedTemplate);
+    });
+
     $('#markdown_editor_textarea').keyup(function() { //keyup()イベントは、押されたキーを話すとイベント発生
         var html = marked(getHtml($(this).val())); //入力された値をval()で取得　marked()でマークダウン文字列をHTMLタグに変換
         $('#markdown_preview').html(html); //markdown_previewのhtml要素の書き換え
@@ -24,7 +44,7 @@ $(function() {
     // 個別の記事画面のマークダウン文字列をHTMLタグに変換する
     var target = $('.article-body')
     var html = marked(getHtml(target.html()));
-    $('.article-body').html(html);
+    target.html(html);
 
     // HTMLでは、比較演算子が &lt; 等になるのでreplace関数で置換を行う　
     function getHtml(html) {

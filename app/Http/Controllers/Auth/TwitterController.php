@@ -37,6 +37,15 @@ class TwitterController extends Controller
         $authUser = User::where('twitter_id', $twitterUser->id)->first();
 
         if ($authUser) {
+            //Twiiterアカウントの名前またはプロフィール画像が変更されていた場合、DBを更新する
+            if ($authUser->name != $twitterUser->nickname || $authUser->avatar != $twitterUser->avatar_original) {
+                User::where('twitter_id', $twitterUser->id)
+                ->update([
+                    'name' => $twitterUser->nickname,
+                    'avatar' => $twitterUser->avatar_original,
+                ]);
+            }
+
             return $authUser;
         }
 

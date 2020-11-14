@@ -14,6 +14,10 @@ $(function() {
         langPrefix: '', // code要素にdefaultで付くlangage-を削除 codeタグのクラス名の接頭辞に関するオプション
         breaks : true, //改行オプション これをtrueにすることで改行が反映される
         sanitize: true, //サニタイズ処理のオプション　これがないと攻撃的なスクリプトを実行されてしまう
+        //コード部分にハイライトを適応させる
+        highlight: function (code, lang) {
+            return hljs.highlightAuto(code, [lang]).value
+        }
     });
 
     //テンプレート文章を表示する

@@ -36,6 +36,14 @@
                     <p><strong>【code記法】</strong><br/>
                         例）`code`</p>
 
+                    <p><strong>【コード挿入】</strong><br/>
+                    [ ``` ]でコードを囲うことで、コードを挿入できる。また、例のように言語を指定することでハイライトされる。<br/>
+                        例）<br/>
+                        ```js<br/>
+                        console.log('hogehoge');<br/>
+                        ```
+                    </p>
+
                     <p><strong>【強調:em】</strong><br/>
                     [ * ]or[ _ ]で囲うと強調され、見た目は斜体になります<br/>
                         例）*強調*</p>

@@ -26,6 +26,7 @@ Slack通知機能時![sasaQslack](https://user-images.githubusercontent.com/4375
 - jQuery:3.5.1
 - bootstrap4
 - marked.js
+- highlight.js
 
 # 実装済み機能
 - ログイン機能

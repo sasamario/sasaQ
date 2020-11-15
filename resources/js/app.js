@@ -50,6 +50,13 @@ $(function() {
     let html = marked(getHtml(target.html()));
     target.html(html);
 
+    //コメント欄のコメントのマークダウン文字列をHTMLタグに変換
+    $('.reply-comment').each(function(index, element) {
+       let replyComment = $(element).html();
+       let replyCommentHtml = marked(getHtml(replyComment));
+       $(element).html(replyCommentHtml);
+    });
+
     // HTMLでは、比較演算子が &lt; 等になるのでreplace関数で置換を行う　
     function getHtml(html) {
         html = html.replace(/&lt;/g, '<');

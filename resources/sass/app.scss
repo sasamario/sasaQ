@@ -136,7 +136,7 @@ body {
   word-wrap: break-word;
 }
 
-.article-box, .reply-box {
+.article-box{
   border-bottom: solid 3px #e6bfab;
 }
 
@@ -182,13 +182,57 @@ body {
         font-size: 1.3rem;
         margin-bottom: 0rem;
     }
-    .reply-time {
-        text-align: right;
-        color: gray;
-    }
-    .reply-comment {
-        //入力された連続する空白や、改行を反映させる
-        white-space: pre-wrap;
+    .reply-box {
+        border-bottom: solid 2.5px #b3977d;
+        .reply-time {
+            text-align: right;
+            color: gray;
+        }
+        .reply-comment {
+            //入力された連続する空白や、改行を反映させる
+            white-space: pre-wrap;
+        }
+        .reply-markdown {
+            h1 {
+                font-size: 1.6rem;
+                font-weight: 700;
+                margin-top: 1.5rem;
+                margin-bottom: 1.5rem;
+                padding-bottom: 0.2rem;
+                border-bottom: solid 2px #e6bfab;
+            }
+            h2 {
+                font-size: 1.4rem;
+                margin-top: 1.5rem;
+                margin-bottom: 1.5rem;
+                padding-bottom: 0.2rem;
+                border-bottom: solid 2px #e6bfab;
+            }
+            h3 {
+                font-size: 1.2rem;
+                margin-top: 1.5rem;
+                margin-bottom: 1.5rem;
+                padding-bottom: 0.2rem;
+                border-bottom: solid 2px #e6bfab;
+            }
+            code {
+                color: white;
+                background: #364549;
+            }
+            pre {
+                code {
+                    color: white;
+                    display: block;
+                    width: 100%;
+                    padding: 1.2rem 1rem;
+                    background: #364549;
+                }
+            }
+            blockquote {
+                padding: 0rem 1rem;
+                border-left: 0.25em solid #e6bfab;
+            }
+        }
     }
 }
 

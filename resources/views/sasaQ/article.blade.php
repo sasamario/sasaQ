@@ -50,7 +50,10 @@
         @endif
         @foreach ($replies as $reply)
             <div class="reply-box col-11 mx-auto py-3">
-                <div class="reply-time">{{$reply->created_at}}</div>
+                <div class="reply-up-detail">
+                    <div class="replier-name">{{$reply->name}} さん</div>
+                    <div class="reply-up-date">{{$reply->created_at}}</div>
+                </div>
                 <div class="reply-comment reply-markdown">{{$reply->body}}</div>
             </div>
         @endforeach

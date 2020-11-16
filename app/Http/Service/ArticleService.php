@@ -4,6 +4,7 @@ namespace App\Http\Service;
 
 use App\Http\Requests\ArticleRequest;
 use App\Notifications\Slack;
+use App\Reply;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\Article;
@@ -73,7 +74,12 @@ class ArticleService
      */
     public function showArticleReply(int $id): Collection
     {
-        return Article::find($id)->replies;
+        return Reply::join('users', 'replies.user_id', '=', 'users.id')
+            ->where('replies.article_id', $id)
+            ->orderBy('replies.created_at', 'asc')
+            ->select('replies.body', 'replies.created_at', 'users.name')
+            ->orderBy('replies.created_at', 'asc')
+            ->get();
     }
 
     /**

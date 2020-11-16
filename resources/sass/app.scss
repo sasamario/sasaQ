@@ -146,12 +146,13 @@ body {
   font-size: 1.2rem;
 }
 
-.article-up-detail {
+.article-up-detail, .reply-up-detail {
   color:gray;
-  .writer-name {
+  margin-bottom: 1rem;
+  .writer-name, .replier-name {
     display: inline-block;
   }
-  .article-up-date {
+  .article-up-date, .reply-up-date {
     display: inline-block;
     float: right;
   }
@@ -184,14 +185,6 @@ body {
     }
     .reply-box {
         border-bottom: solid 2.5px #b3977d;
-        .reply-time {
-            text-align: right;
-            color: gray;
-        }
-        .reply-comment {
-            //入力された連続する空白や、改行を反映させる
-            white-space: pre-wrap;
-        }
         .reply-markdown {
             h1 {
                 font-size: 1.6rem;

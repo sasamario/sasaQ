@@ -185,47 +185,49 @@ body {
     }
     .reply-box {
         border-bottom: solid 2.5px #b3977d;
-        .reply-markdown {
-            h1 {
-                font-size: 1.6rem;
-                font-weight: 700;
-                margin-top: 1.5rem;
-                margin-bottom: 1.5rem;
-                padding-bottom: 0.2rem;
-                border-bottom: solid 2px #e6bfab;
-            }
-            h2 {
-                font-size: 1.4rem;
-                margin-top: 1.5rem;
-                margin-bottom: 1.5rem;
-                padding-bottom: 0.2rem;
-                border-bottom: solid 2px #e6bfab;
-            }
-            h3 {
-                font-size: 1.2rem;
-                margin-top: 1.5rem;
-                margin-bottom: 1.5rem;
-                padding-bottom: 0.2rem;
-                border-bottom: solid 2px #e6bfab;
-            }
-            code {
-                color: white;
-                background: #364549;
-            }
-            pre {
-                code {
-                    color: white;
-                    display: block;
-                    width: 100%;
-                    padding: 1.2rem 1rem;
-                    background: #364549;
-                }
-            }
-            blockquote {
-                padding: 0rem 1rem;
-                border-left: 0.25em solid #e6bfab;
-            }
+    }
+}
+
+//コメント用マークダウンCSS
+.reply-markdown {
+    h1 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.2rem;
+        border-bottom: solid 2px #e6bfab;
+    }
+    h2 {
+        font-size: 1.4rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.2rem;
+        border-bottom: solid 2px #e6bfab;
+    }
+    h3 {
+        font-size: 1.2rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.2rem;
+        border-bottom: solid 2px #e6bfab;
+    }
+    code {
+        color: white;
+        background: #364549;
+    }
+    pre {
+        code {
+            color: white;
+            display: block;
+            width: 100%;
+            padding: 1.2rem 1rem;
+            background: #364549;
         }
+    }
+    blockquote {
+        padding: 0rem 1rem;
+        border-left: 0.25em solid #e6bfab;
     }
 }
 
@@ -236,12 +238,12 @@ body {
   background-color: #faebd7;
   box-shadow: 0 0 4px #999999;
   .form-title {
-    padding: 0.25rem;
+    padding: 0.5rem;
     margin: 0;
     color: #999999;
   }
   .reply-form {
-    padding: 0.25rem;
+    padding: 0.5rem;
     .reply-body {
       width: 100%;
       padding: 0.5rem;
@@ -254,6 +256,34 @@ body {
       background: #FFC679;
     }
   }
+}
+
+//コメントフォームでのプレビュー用
+.tab-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    .tab-label {
+        color: White;
+        background: LightGray;
+        margin-right: 5px;
+        padding: 3px 12px;
+        order: -1;
+        cursor: pointer;
+    }
+    .tab-content {
+        width: 100%;
+        display: none;
+    }
+    // アクティブなタブ
+    .tab-switch:checked+.tab-label {
+        background: #e6bfab;
+    }
+    .tab-switch:checked+.tab-label+.tab-content {
+        display: block;
+    }
+    .tab-switch {
+        display: none;
+    }
 }
 
 //マイページ

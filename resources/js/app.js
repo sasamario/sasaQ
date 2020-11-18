@@ -45,6 +45,13 @@ $(function() {
         $('#markdown_preview').html(html); //markdown_previewのhtml要素の書き換え
     });
 
+    //プレビューボタンクリック時の処理
+    $('.preview-check-button').click(function() {
+        let replyBody = $('.reply-body');
+        let replyBodyHtml = marked(getHtml(replyBody.val()));
+        $('.reply-body-preview').html(replyBodyHtml);
+    });
+
     // 個別の記事画面のマークダウン文字列をHTMLタグに変換する
     let target = $('.article-body');
     let html = marked(getHtml(target.html()));

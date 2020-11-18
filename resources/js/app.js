@@ -58,7 +58,7 @@ $(function() {
 
 //コメント欄のコメントのマークダウン文字列をHTMLタグに変換する処理
 $(function() {
-    $('.reply-comment').each(function(index, element) {
+    $('.reply-markdown').each(function(index, element) {
         let replyComment = $(element).html();
         let replyCommentHtml = marked(getHtml(replyComment));
         $(element).html(replyCommentHtml);

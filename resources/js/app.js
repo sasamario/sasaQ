@@ -74,6 +74,13 @@ $(function() {
     });
 });
 
+//記事編集フォーム遷移時のプレビュー表示処理
+$(function() {
+    let editTextarea = $('#markdown_editor_textarea');
+    let editTextareaHtml = marked(getHtml(editTextarea.html()));
+    $('#markdown_preview').html(editTextareaHtml);
+});
+
 // HTMLでは、比較演算子が &lt; 等になるのでreplace関数で置換を行う　
 function getHtml(html) {
     html = html.replace(/&lt;/g, '<');

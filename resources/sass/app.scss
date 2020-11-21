@@ -15,6 +15,10 @@ body {
     background-color: #b3977d;
 }
 
+.navbar-top {
+    font-size: 14.4px;
+}
+
 .search {
     background-color: #faebd7;
     border-radius: 0.4rem;
@@ -262,6 +266,9 @@ body {
 .tab-wrap {
     display: flex;
     flex-wrap: wrap;
+    .help-button {
+        font-size: 1.2rem;
+    }
     .tab-label {
         color: White;
         background: LightGray;

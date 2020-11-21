@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@include('layouts.helpmodal')
+
 @section('reply-form')
     <div class="reply-wrapper">
         <p class="form-title">返信コメント編集フォーム</p>
@@ -7,6 +9,7 @@
             <form action="{{route('updateReply')}}" method="post">
                 @csrf
                 <div class="tab-wrap">
+                    <div class="help-button" data-toggle="modal" data-target="#helpModal"><i class="far fa-question-circle" data-toggle="tooltip" title="マークダウン記法確認"></i></div>
                     <input id="tab-1" type="radio" name="tab" class="tab-switch" checked="checked"><label class="tab-label" for="tab-1">編集</label>
                     <div class="tab-content">
                         <textarea class="reply-body" name="body" cols="30" rows="5" placeholder="テキストを入力">{{$editReply->body}}</textarea>

@@ -2,6 +2,8 @@
 
 @include('layouts.error')
 
+@include('layouts.helpmodal')
+
 @section('content')
     <div class="top-wrapper">
         <div class="article col-11 mx-auto py-3">
@@ -67,6 +69,7 @@
             <form action="{{route('addReply')}}" method="post">
                 @csrf
                 <div class="tab-wrap">
+                    <div class="help-button" data-toggle="modal" data-target="#helpModal"><i class="far fa-question-circle" data-toggle="tooltip" title="マークダウン記法確認"></i></div>
                     <input id="tab-1" type="radio" name="tab" class="tab-switch" checked="checked"><label class="tab-label" for="tab-1">編集</label>
                     <div class="tab-content">
                         <textarea class="reply-body" name="body" cols="30" rows="5" placeholder="テキストを入力"></textarea>

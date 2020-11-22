@@ -60,7 +60,7 @@ class User extends Authenticatable
      */
     public function articles()
     {
-        //リレーション設定とリレーション先（Article）のソート設定を行っている
-        return $this->hasMany('App\Article', 'user_id')->orderBy('created_at', 'desc');
+        //リレーション設定とリレーションの条件を指定
+        return $this->hasMany('App\Article', 'user_id')->where('status', Article::STATUS_POST);
     }
 }

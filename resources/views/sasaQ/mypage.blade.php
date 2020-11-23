@@ -95,8 +95,7 @@
 
                             <div class="reply-time">{{$reply->created_at}}</div>
                         </div>
-
-                        <div class="reply-comment">{{$reply->body}}</div>
+                        <div class="reply-comment">{{\Illuminate\Support\Str::limit($reply->body, 100, '...')}}</div>
                     </div>
                 @endforeach
                 <div class="replies-paginate row justify-content-center mt-4">

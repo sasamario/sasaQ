@@ -95,6 +95,7 @@
 
                             <div class="reply-time">{{$reply->created_at}}</div>
                         </div>
+                        <a class="article-link" href="{{route('show', ['id' => $reply->article_id])}}">該当記事</a>
                         <div class="reply-comment">{{\Illuminate\Support\Str::limit($reply->body, 100, '...')}}</div>
                     </div>
                 @endforeach

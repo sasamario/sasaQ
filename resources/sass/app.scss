@@ -378,10 +378,13 @@ body {
       }
       .reply-box {
         border-bottom: solid 3px #e6bfab;
-      }
-      .reply-dot {
-        padding-left: 0.4rem;
-        cursor: pointer;
+          .reply-dot {
+              padding-left: 0.4rem;
+              cursor: pointer;
+          }
+          .article-link {
+              color: #cc9c7a;
+          }
       }
     }
   }

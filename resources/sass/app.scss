@@ -414,10 +414,19 @@ body {
     }
 }
 
-.template-button, .help-button {
+.image-button, .template-button, .help-button {
     display: inline-block;
     margin: 0 0.5rem;
     cursor: pointer;
+}
+
+.image-button > label {
+    display: inline;
+    cursor: pointer;
+}
+
+.input-file-button {
+    display: none;
 }
 
 .importance-form {

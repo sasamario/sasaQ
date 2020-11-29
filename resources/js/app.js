@@ -89,6 +89,17 @@ function getHtml(html) {
     return html;
 }
 
+//画像選択ボタンより画像を選択時に行う処理
+$(function() {
+    $('#image').change(function() {
+        let file = $(this).prop('files')[0]; //prop()は、HTML要素に付与されている「id・class・name」などの属性のプロパティを取得できる
+        let formData =  new FormData();
+        formData.append($(this).attr('name'), file) //appendでキー（今回はファイルのname）とバリュー（ファイルデータ）を関連付けている
+
+        passImageData(formData);
+    });
+});
+
 //非同期処理　画像データを渡す処理
 function passImageData(imageData) {
     $.ajax({

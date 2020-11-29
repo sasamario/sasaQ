@@ -106,3 +106,6 @@ Route::get('/mypage/profile/edit', 'UserController@edit')->name('editProfile');
 
 //プロフィール更新時のルート
 Route::post('/mypage/profile/update', 'UserController@update')->name('updateProfile');
+
+//画像保存・URLを渡すためのルート
+Route::post('/ajax/image', 'ArticleController@passImagePath')->name('addImagePath');

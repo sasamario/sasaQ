@@ -126,6 +126,11 @@ body {
     padding: 0rem 1rem;
     border-left: 0.25em solid #e6bfab;
   }
+  img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain; //画像を切り抜かないで、指定の画像領域に収まるようリサイズされる（縦横比は維持）
+  }
 }
 
 //トップページ
@@ -414,10 +419,19 @@ body {
     }
 }
 
-.template-button, .help-button {
+.image-button, .template-button, .help-button {
     display: inline-block;
     margin: 0 0.5rem;
     cursor: pointer;
+}
+
+.image-button > label {
+    display: inline;
+    cursor: pointer;
+}
+
+.input-file-button {
+    display: none;
 }
 
 .importance-form {

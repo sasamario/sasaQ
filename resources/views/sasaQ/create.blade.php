@@ -27,6 +27,12 @@
                 <div class="card-header">
                     <div class="float-left">本文</div>
                     <div class="float-right">
+                        <div class="image-button">
+                            <label for="image">
+                                <i class="far fa-image" data-toggle="tooltip" title="画像を選択"></i>
+                                <input type="file" name="image" id="image" class="input-file-button">
+                            </label>
+                        </div>
                         <div class="template-button" id="template"><i class="far fa-file-alt" data-toggle="tooltip" title="質問テンプレート作成"></i></div>
                         <div class="help-button" data-toggle="modal" data-target="#helpModal"><i class="far fa-question-circle" data-toggle="tooltip" title="マークダウン記法確認"></i></div>
                     </div>

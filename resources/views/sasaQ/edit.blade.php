@@ -27,7 +27,15 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">本文</div>
-                        <div class="float-right help-button" data-toggle="modal" data-target="#helpModal"><i class="far fa-question-circle"></i></div>
+                        <div class="float-right">
+                            <div class="image-button">
+                                <label for="image">
+                                    <i class="far fa-image" data-toggle="tooltip" title="画像を選択"></i>
+                                    <input type="file" name="image" id="image" class="input-file-button">
+                                </label>
+                            </div>
+                            <div class="help-button" data-toggle="modal" data-target="#helpModal"><i class="far fa-question-circle" data-toggle="tooltip" title="マークダウン記法確認"></i></div>
+                        </div>
                     </div>
                     <textarea class="card-body p-1" name="body" id="markdown_editor_textarea" cols="30" rows="15" class="form-control">{{$editArticle->body}}</textarea>
                 </div>

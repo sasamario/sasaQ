@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Article;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleService
 {
@@ -238,5 +239,22 @@ class ArticleService
         $status = Article::where('article_id', $id)->value('importance');
 
         $user->notify(new Slack($user->name, $request->title, $id, $status));
+    }
+
+    /**
+     * @param Request $request
+     * @return string
+     */
+    public function getImagePath(Request $request): string
+    {
+        $image = $request->file('image');
+
+        //imagesというファイルに、第二引数に指定した画像を保存する
+        $path = Storage::disk('s3')->putFile('images/article', $image, 'public');
+
+        //アップロードした画像のフルパスを取得
+        $imagePath = Storage::disk('s3')->url($path);
+
+        return $imagePath;
     }
 }

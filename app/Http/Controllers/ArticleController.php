@@ -185,4 +185,15 @@ class ArticleController extends Controller
 
         return view('sasaQ.draftArticle', compact('article'));
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function passImagePath(Request $request)
+    {
+        $imagePath = $this->articleService->getImagePath($request);
+
+        return response()->json($imagePath);
+    }
 }

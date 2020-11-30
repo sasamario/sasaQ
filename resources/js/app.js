@@ -89,6 +89,38 @@ function getHtml(html) {
     return html;
 }
 
+//画像選択ボタンより画像を選択時に行う処理
+$(function() {
+    $('#image').change(function() {
+        let file = $(this).prop('files')[0]; //prop()は、HTML要素に付与されている「id・class・name」などの属性のプロパティを取得できる
+        let formData =  new FormData();
+        formData.append($(this).attr('name'), file) //appendでキー（今回はファイルのname）とバリュー（ファイルデータ）を関連付けている
+
+        passImageData(formData);
+    });
+});
+
+//非同期処理　画像データを渡す処理
+function passImageData(imageData) {
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}, //CSRFのトークンをヘッダーにて読み込ませることで、ajaxするときに毎回csrfトークンが送られる
+        type: 'POST',
+        url: '/ajax/image',
+        data: imageData,
+        processData: false, //falseにすることで、データが文字列に自動変換されるのを避けることが出来る
+        contentType: false, //ajaxのリクエストがFormDataの場合、適切なcontentTypeになるため、指定する必要がないので必ずfalseにすること　これがないと500エラーになる
+    }).done(function (response) {
+        let image = "![画像](" + response + ")";
+
+        //本文の末尾に画像URLを追加する
+        $('#markdown_editor_textarea').focus().val($('#markdown_editor_textarea').val() +"\n" + image);
+
+        //画像URLのマークダウン形式をHTMLに変換し、プレビュー表示部分に追加する
+        let markedImage = marked(image);
+        $('#markdown_preview').html($('#markdown_preview').html() + markedImage);
+    });
+}
+
 window.Vue = require('vue');
 
 /**

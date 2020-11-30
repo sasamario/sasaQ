@@ -52,6 +52,7 @@ Slack通知機能時![sasaQslack](https://user-images.githubusercontent.com/4375
 - 機能テスト（PHPUnit）
 - プロフィール画像アップロード機能（AWS S3）
 - 画像アップロード時のプレビュー機能
+- 画像投稿機能（非同期、複数投稿対応）
 
 
 

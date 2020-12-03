@@ -238,6 +238,11 @@ body {
         padding: 0rem 1rem;
         border-left: 0.25em solid #e6bfab;
     }
+    img {
+        width: 100%;
+        height: 200px;
+        object-fit: contain; //画像を切り抜かないで、指定の画像領域に収まるようリサイズされる（縦横比は維持）
+    }
 }
 
 //返信フォーム
@@ -271,7 +276,7 @@ body {
 .tab-wrap {
     display: flex;
     flex-wrap: wrap;
-    .help-button {
+    .help-button, .image-button {
         font-size: 1.2rem;
     }
     .tab-label {

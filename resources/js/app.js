@@ -113,9 +113,9 @@ function passImageData(imageData) {
         let image = "![画像](" + response + ")";
 
         //本文の末尾に画像URLを追加する
-        $('#markdown_editor_textarea').focus().val($('#markdown_editor_textarea').val() +"\n" + image);
+        $('.textarea-image').focus().val($('.textarea-image').val() +"\n" + image);
 
-        //画像URLのマークダウン形式をHTMLに変換し、プレビュー表示部分に追加する
+        //画像URLのマークダウン形式をHTMLに変換し、プレビュー表示部分に追加する（記事投稿・編集時のみ）
         let markedImage = marked(image);
         $('#markdown_preview').html($('#markdown_preview').html() + markedImage);
     });

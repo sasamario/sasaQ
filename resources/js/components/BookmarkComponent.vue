@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button v-on:click="addOrDelete">
+        <button class="bookmark-button" v-on:click="addOrDelete">
             {{ bookmark }}
             <i :class="[isActiveTrue === true ? 'fas fa-bookmark' : 'far fa-bookmark']"></i>
         </button>

@@ -184,6 +184,12 @@ body {
       font-size: 2rem;
     }
   }
+  .bookmark-button {
+    border-style: none;
+    padding: 0.3rem;
+    color: #555555;
+    background: LightGray;
+  }
 }
 
 //返信コメント欄
@@ -398,6 +404,15 @@ body {
       }
     }
   }
+}
+
+.form-edit-button, .form-delete-button {
+    background: #e6bfab;
+    border-style: none;
+    border-radius: 0.3rem;
+    a {
+        color: #555555;
+    }
 }
 
 //投稿状態と質問の解決状態に関するCSS

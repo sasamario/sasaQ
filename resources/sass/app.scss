@@ -32,7 +32,7 @@ body {
 
 //welcomeページ
 .welcome-body {
-    background-color: #cc9c7a;
+    background-color: #ffffff;
     font-family: 'Nunito', sans-serif;
     font-weight: 400;
     .welcome-header {
@@ -48,14 +48,34 @@ body {
             text-transform: uppercase;
         }
     }
-    .welcome-content {
-        text-align: center;
-        margin: 4.5rem auto;
-        .welcome-title {
-            font-size: 4rem;
+    .first-content {
+        .first-content-image {
+            width: 100%;
+            height: 500px;
+            object-fit: contain;
         }
-        .persona-image {
-            width: 80%;
+    }
+
+    .second-content {
+        width: 100%;
+        background-color: #faebd7;
+        .second-content-item {
+            display: flex;
+            width: 100%;
+            padding: 2rem;
+            font-size: 1.1rem;
+            margin: 0;
+            .second-content-image, .second-content-text {
+                padding: 1rem;
+                margin: auto 0;
+            }
+            .second-content-text > strong {
+                font-size: 1.5rem;
+            }
+        }
+        //偶数番目（even）のコンテンツの画像とテキスト文の配置を逆向き（row-reverse）にする
+        .second-content-item:nth-child(even) {
+            flex-direction: row-reverse;
         }
     }
 }

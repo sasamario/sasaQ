@@ -51,6 +51,24 @@
                 また、同じ質問を防ぐためにはオープンなコミュニティでかつ社内に質問と回答をデータとして残すことで解決できる。<br/>
                 上記の要件を満たすために、社内向け質問アプリケーションの開発を行いました。</p>
             </div>
+            <div class="second-content-item row">
+                <img class="second-content-image col-12 col-md-6" src="{{asset( '/img/function.png' )}}" alt="team">
+                <p class="second-content-text col-12 col-md-6"><strong>【実装機能】</strong><br/>
+                    ◯ログイン系<br/>
+                    ゲストログイン、Twitterログイン、Googleログイン<br/>
+                    ◯基本機能<br/>
+                    質問/回答のCRUD機能、検索機能、質問下書き保存機能<br/>
+                    ◯その他<br/>
+                    ・質問/回答投稿時Slackチャンネルへの通知機能<br/>
+                    ・質問作成、編集時のリアルタイムプレビュー機能<br/>
+                    ・画像投稿機能（複数対応、非同期）<br/>
+                    ・回答作成/編集時のプレビュー機能<br/>
+                    ・マークダウン記法確認用のヘルプモーダル<br/>
+                    ・質問作成時の簡易テンプレート機能<br/>
+                    ・質問のブックマーク機能<br/>
+                    ・プロフィール編集時の画像プレビュー表示機能<br/>
+                </p>
+            </div>
         </div>
     </body>
 </html>

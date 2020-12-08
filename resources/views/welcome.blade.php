@@ -28,23 +28,47 @@
                 </div>
             @endif
         </div>
-        <div class="welcome-content">
-            <div class="welcome-title">
-                Welcome to <strong>sasaQ</strong>
-            </div>
 
-            <div class="detail">
-                <p><strong>『sasaQ』</strong>は、社内向けの質問サービスです。<br/>
-                    新卒エンジニアとして働いてみて、チャットベースの質問では相手に自分の思いを伝えることが難しいと感じました。<br/>
-                    実際に、先輩に「何がわからないか伝わらない。マークダウン記法を使って質問するといい」とアドバイスをいただきました。<br/>
-                    質問をマークダウン記法を使って取りまとめることで、自分の伝えたいことが整理でき回答者側も的確なアドバイスができると思います。<br/>
-                    そういった実体験から、マークダウンの使える質問サービスを開発することにしました。<br/>
-                    また、社内向けのサービスのため質問や回答がデータとして蓄積していき、同じ質問で時間を取られることがなくなる点、<br/>
-                    マークダウン記法を使用することによる質問力の向上などの効果が期待できます。<br/>
-                    <strong>※テストログイン用のアカウントあります。ログインフォームにアクセスお願いいたします。</strong></p>
+        <div class="first-content">
+            <img class="first-content-image" src="{{asset( '/img/top.png' )}}" alt="first-image">
+            <p class="first-content-text">「クールな質問をデータに」</p>
+        </div>
+
+        <div class="second-content">
+            <div class="second-content-item row">
+                <img class="second-content-image col-12 col-md-6" src="{{asset( '/img/question.png' )}}" alt="question">
+                <p class="second-content-text col-12 col-md-6"><strong>【課題】</strong><br/>
+                コロナウイルスの影響で、リモートワークが推奨されるようになりました。 その結果、対面での質問の機会が減り、チャットベースでの質問が基本となりました。<br/>
+                チャットベースでの質問になり以下の点が問題視されています。<br/><br/>
+                ◯チャットベースでの質問では自分の「わからないこと」「躓いていること」を伝えることが難しい。<br/><br/>
+                ◯個人チャットのようなクローズドなコミュニティでの質問になると他の人から見えないため同じような質問をされる可能性がある。</p>
             </div>
-            <img class="persona-image" src="{{ asset('/img/ペルソナ.PNG') }}">
-            <p>※イメージ</p>
+            <div class="second-content-item row">
+                <img class="second-content-image col-12 col-md-6" src="{{asset( '/img/solution.png' )}}" alt="team">
+                <p class="second-content-text col-12 col-md-6"><strong>【解決策】</strong><br/>
+                自分の考え等を伝えることが難しい件については、マークダウン記法を用いることで解決できる。<br/>
+                マークダウン記法を用いることで、見出しや強調など文字装飾が簡単にできるのため表現の幅が広がり伝えやすくなる。<br/><br/>
+                また、同じ質問を防ぐためにはオープンなコミュニティでかつ社内に質問と回答をデータとして残すことで解決できる。<br/>
+                上記の要件を満たすために、社内向け質問アプリケーションの開発を行いました。</p>
+            </div>
+            <div class="second-content-item row">
+                <img class="second-content-image col-12 col-md-6" src="{{asset( '/img/function.png' )}}" alt="team">
+                <p class="second-content-text col-12 col-md-6"><strong>【実装機能】</strong><br/>
+                    ◯ログイン系<br/>
+                    ゲストログイン、Twitterログイン、Googleログイン<br/>
+                    ◯基本機能<br/>
+                    質問/回答のCRUD機能、検索機能、質問下書き保存機能<br/>
+                    ◯その他<br/>
+                    ・質問/回答投稿時Slackチャンネルへの通知機能<br/>
+                    ・質問作成、編集時のリアルタイムプレビュー機能<br/>
+                    ・画像投稿機能（複数対応、非同期）<br/>
+                    ・回答作成/編集時のプレビュー機能<br/>
+                    ・マークダウン記法確認用のヘルプモーダル<br/>
+                    ・質問作成時の簡易テンプレート機能<br/>
+                    ・質問のブックマーク機能<br/>
+                    ・プロフィール編集時の画像プレビュー表示機能<br/>
+                </p>
+            </div>
         </div>
     </body>
 </html>

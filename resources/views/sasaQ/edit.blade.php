@@ -37,7 +37,7 @@
                             <div class="help-button" data-toggle="modal" data-target="#helpModal"><i class="far fa-question-circle" data-toggle="tooltip" title="マークダウン記法確認"></i></div>
                         </div>
                     </div>
-                    <textarea class="card-body textarea-image p-1" name="body" id="markdown_editor_textarea" cols="30" rows="15" class="form-control">{{$editArticle->body}}</textarea>
+                    <textarea class="card-body article-textarea p-1" name="body" id="markdown_editor_textarea" cols="30" rows="15" class="form-control">{{$editArticle->body}}</textarea>
                 </div>
             </div>
             <div class="col-6 p-0">

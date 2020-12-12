@@ -20,7 +20,7 @@ $(function() {
         }
     });
 
-    $('#markdown_editor_textarea').keyup(function() { //keyup()イベントは、押されたキーを話すとイベント発生
+    $('.article-textarea').keyup(function() { //keyup()イベントは、押されたキーを話すとイベント発生
         let html = marked(getHtml($(this).val())); //入力された値をval()で取得　marked()でマークダウン文字列をHTMLタグに変換
         $('#markdown_preview').html(html); //markdown_previewのhtml要素の書き換え
     });
@@ -76,7 +76,7 @@ $(function() {
 
 //記事編集フォーム遷移時のプレビュー表示処理
 $(function() {
-    let editTextarea = $('#markdown_editor_textarea');
+    let editTextarea = $('.article-textarea');
     let editTextareaHtml = marked(getHtml(editTextarea.html()));
     $('#markdown_preview').html(editTextareaHtml);
 });
@@ -110,14 +110,26 @@ function passImageData(imageData) {
         processData: false, //falseにすることで、データが文字列に自動変換されるのを避けることが出来る
         contentType: false, //ajaxのリクエストがFormDataの場合、適切なcontentTypeになるため、指定する必要がないので必ずfalseにすること　これがないと500エラーになる
     }).done(function (response) {
+        //受け取った画像URLを元に、画像を表示できるようマークダウン形式にする
         let image = "![画像](" + response + ")";
 
-        //本文の末尾に画像URLを追加する
-        $('.textarea-image').focus().val($('.textarea-image').val() +"\n" + image);
+        let target = document.getElementById('markdown_editor_textarea');
 
-        //画像URLのマークダウン形式をHTMLに変換し、プレビュー表示部分に追加する（記事投稿・編集時のみ）
-        let markedImage = marked(image);
-        $('#markdown_preview').html($('#markdown_preview').html() + markedImage);
+        //テキストエリアのカーソル部分に画像を差し込む　substr()を用いてカーソル位置の前後文字列に分ける　selectionStartでカーソルの開始位置を取得
+        let beforeCursor = target.value.substring(0, target.selectionStart);
+        let afterCursor = target.value.substring(target.selectionStart);
+        let newText = beforeCursor + image + afterCursor;
+
+        //テキストエリアの本文箇所にて、画像URLを挿入した新たな文章に書き換え
+        target.value = newText;
+
+        //プレビューエリアのHTML要素の書き換え
+        //質問フォームとコメントフォームではプレビューの処理が異なるため、質問フォームの場合のみ下記処理を実行するよう条件分岐する
+        let markdownPreview =  document.getElementById('markdown_preview');
+        if (markdownPreview != null) {
+            //本文の文章をマークダウン記法を用いてHTMLタグに変換して、プレビューのHTML要素に置き換える
+            markdownPreview.innerHTML = marked(newText);
+        }
     });
 }
 

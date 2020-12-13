@@ -149,6 +149,7 @@ body {
       width: 100%;
       padding: 1.2rem 1rem;
       background: #364549;
+      overflow-x: auto; //これを指定することで、はみ出たcodeや背景色がスクロール先でも正しく表示される。
     }
   }
   blockquote {
